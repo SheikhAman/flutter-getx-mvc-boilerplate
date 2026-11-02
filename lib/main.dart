@@ -1,3 +1,13 @@
+// ===========================================================================
+// Project: flutter_core (Enterprise Modular GetX MVC+S Master Boilerplate)
+// Environment:
+//   - Flutter Version: 3.41.9 (Channel: stable)
+//   - Dart SDK: 3.11.5
+//   - Framework Revision: 00b0c91f06
+//   - DevTools: 2.54.2
+// Architecture: Modular GetX MVC+S (Model-View-Controller-Service)
+// ===========================================================================
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
