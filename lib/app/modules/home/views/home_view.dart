@@ -60,16 +60,20 @@ class HomeView extends GetView<HomeController> {
                 maxLines: 4,
               ),
               const SizedBox(height: AppSizes.p24),
-              CustomButton(
-                text: AppStrings.submit.tr,
-                onPressed: () async {
-                  if (titleController.text.trim().isEmpty) return;
-                  final success = await controller.createPost(
-                    titleController.text.trim(),
-                    bodyController.text.trim(),
-                  );
-                  if (success) Get.back();
-                },
+              Obx(
+                () => CustomButton(
+                  text: AppStrings.submit.tr,
+                  isLoading: controller.isSubmitting.value,
+                  onPressed: controller.isSubmitting.value
+                      ? null
+                      : () {
+                          if (titleController.text.trim().isEmpty) return;
+                          controller.createPost(
+                            titleController.text.trim(),
+                            bodyController.text.trim(),
+                          );
+                        },
+                ),
               ),
               const SizedBox(height: AppSizes.p12),
             ],

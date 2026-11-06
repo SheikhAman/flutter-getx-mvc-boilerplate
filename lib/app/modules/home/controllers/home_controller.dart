@@ -12,6 +12,7 @@ class HomeController extends GetxController {
 
   final RxBool isLoading = false.obs;
   final RxBool isLoadingMore = false.obs;
+  final RxBool isSubmitting = false.obs;
   final RxBool hasMore = true.obs;
   final RxString errorMessage = ''.obs;
   final RxList<PostModel> posts = <PostModel>[].obs;
@@ -102,17 +103,28 @@ class HomeController extends GetxController {
   }
 
   Future<bool> createPost(String title, String body) async {
+    if (isSubmitting.value) return false;
+    final trimmedTitle = title.trim();
+    if (trimmedTitle.isEmpty) return false;
+
     try {
+      isSubmitting.value = true;
       AppSnackbar.showLoading();
-      final newPost = await provider.createPost(title: title, body: body);
+      final newPost = await provider.createPost(
+        title: trimmedTitle,
+        body: body.trim(),
+      );
       posts.insert(0, newPost);
       AppSnackbar.dismissLoading();
+      Get.back();
       AppSnackbar.showSuccess('Post created successfully!');
       return true;
     } catch (e) {
       AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
       return false;
+    } finally {
+      isSubmitting.value = false;
     }
   }
 
