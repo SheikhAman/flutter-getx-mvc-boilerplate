@@ -7,4 +7,3 @@ class SettingsBinding extends Bindings {
     Get.lazyPut<SettingsController>(() => SettingsController());
   }
 }
-

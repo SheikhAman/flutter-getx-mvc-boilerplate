@@ -72,4 +72,3 @@ class PostDetailController extends GetxController {
     }
   }
 }
-

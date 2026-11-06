@@ -44,7 +44,8 @@ class ApiInterceptor extends Interceptor {
   }
 
   @override
-  Future<void> onError(DioException err, ErrorInterceptorHandler handler) async {
+  Future<void> onError(
+      DioException err, ErrorInterceptorHandler handler) async {
     developer.log(
       '<-- ERROR ${err.response?.statusCode} ${err.requestOptions.method.toUpperCase()} ${err.requestOptions.path}: ${err.message}',
       name: 'DioClient',
@@ -64,4 +65,3 @@ class ApiInterceptor extends Interceptor {
     handler.next(err);
   }
 }
-

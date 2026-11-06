@@ -15,7 +15,8 @@ class ApiException implements Exception {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
         return const ApiException(
-          message: 'Connection timed out. Please check your internet connection.',
+          message:
+              'Connection timed out. Please check your internet connection.',
           statusCode: 408,
         );
       case DioExceptionType.sendTimeout:
@@ -42,12 +43,14 @@ class ApiException implements Exception {
         );
       case DioExceptionType.connectionError:
         return const ApiException(
-          message: 'No internet connection detected. Please verify your network.',
+          message:
+              'No internet connection detected. Please verify your network.',
           statusCode: 503,
         );
       case DioExceptionType.unknown:
         return ApiException(
-          message: dioException.message ?? 'An unexpected network error occurred.',
+          message:
+              dioException.message ?? 'An unexpected network error occurred.',
           statusCode: 500,
         );
     }
@@ -85,7 +88,8 @@ class ApiException implements Exception {
         );
       case 403:
         return ApiException(
-          message: 'Access forbidden. You do not have permission for this resource.',
+          message:
+              'Access forbidden. You do not have permission for this resource.',
           statusCode: 403,
           data: data,
         );

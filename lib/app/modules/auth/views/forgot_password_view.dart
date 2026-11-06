@@ -92,4 +92,3 @@ class ForgotPasswordView extends GetView<AuthController> {
     );
   }
 }
-

@@ -22,7 +22,8 @@ class ThemeController extends GetxController {
 
   Color get primaryColor => AppColors.seedAt(primaryColorIndex.value);
 
-  ThemeMode get themeMode => isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get themeMode =>
+      isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
 
   Future<void> toggleTheme() async {
     isDarkMode.value = !isDarkMode.value;
@@ -174,4 +175,3 @@ class ThemeController extends GetxController {
     );
   }
 }
-

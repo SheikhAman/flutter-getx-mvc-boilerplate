@@ -5,7 +5,8 @@ import '../../../data/models/post_model.dart';
 class SearchProvider {
   final DioClient _dioClient;
 
-  SearchProvider({DioClient? dioClient}) : _dioClient = dioClient ?? DioClient();
+  SearchProvider({DioClient? dioClient})
+      : _dioClient = dioClient ?? DioClient();
 
   Future<List<PostModel>> searchPosts(String query) async {
     final response = await _dioClient.get(ApiConstants.posts);
@@ -24,4 +25,3 @@ class SearchProvider {
     return [];
   }
 }
-

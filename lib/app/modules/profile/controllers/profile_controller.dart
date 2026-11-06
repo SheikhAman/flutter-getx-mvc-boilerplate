@@ -90,4 +90,3 @@ class ProfileController extends GetxController {
     super.onClose();
   }
 }
-

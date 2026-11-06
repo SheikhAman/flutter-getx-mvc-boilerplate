@@ -25,4 +25,3 @@ class AppRoutes {
   static const String webview = '/webview';
   static const String unknownRoute = '/404';
 }
-

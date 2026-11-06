@@ -7,4 +7,3 @@ class CommonBinding extends Bindings {
     Get.lazyPut<CommonController>(() => CommonController());
   }
 }
-

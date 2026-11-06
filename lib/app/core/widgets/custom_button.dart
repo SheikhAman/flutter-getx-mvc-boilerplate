@@ -75,7 +75,8 @@ class CustomButton extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    final effectiveBgColor = backgroundColor ?? _getDefaultBackgroundColor(theme, isDark);
+    final effectiveBgColor =
+        backgroundColor ?? _getDefaultBackgroundColor(theme, isDark);
     final effectiveTextColor = textColor ?? _getDefaultTextColor(theme, isDark);
 
     final Widget content = isLoading
@@ -155,4 +156,3 @@ class CustomButton extends StatelessWidget {
     }
   }
 }
-

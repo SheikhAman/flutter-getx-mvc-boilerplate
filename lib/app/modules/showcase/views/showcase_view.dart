@@ -16,7 +16,8 @@ class ShowcaseView extends GetView<ShowcaseController> {
   void _showDemoDialog(BuildContext context) {
     Get.defaultDialog(
       title: 'Boilerplate Dialog',
-      middleText: 'This is a standardized GetX dialog styled for enterprise apps.',
+      middleText:
+          'This is a standardized GetX dialog styled for enterprise apps.',
       textConfirm: 'Confirm',
       textCancel: 'Cancel',
       confirmTextColor: Colors.white,
@@ -87,17 +88,20 @@ class ShowcaseView extends GetView<ShowcaseController> {
               decoration: BoxDecoration(
                 color: theme.colorScheme.primary.withAlpha(20),
                 borderRadius: AppSizes.borderRadiusMd,
-                border: Border.all(color: theme.colorScheme.primary.withAlpha(50)),
+                border:
+                    Border.all(color: theme.colorScheme.primary.withAlpha(50)),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.palette_outlined, color: theme.colorScheme.primary, size: 32),
+                  Icon(Icons.palette_outlined,
+                      color: theme.colorScheme.primary, size: 32),
                   const SizedBox(width: AppSizes.p12),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Design System & Tokens', style: AppTextStyles.titleLarge),
+                        Text('Design System & Tokens',
+                            style: AppTextStyles.titleLarge),
                         Text(
                           'Test UI primitives, controls, and reactive triggers.',
                           style: AppTextStyles.bodySmall,
@@ -262,12 +266,15 @@ class ShowcaseView extends GetView<ShowcaseController> {
                 color: theme.cardColor,
                 borderRadius: AppSizes.borderRadiusMd,
                 border: Border.all(
-                  color: isDark ? const Color(0xFF2C2C2C) : const Color(0xFFE5E7EB),
+                  color: isDark
+                      ? const Color(0xFF2C2C2C)
+                      : const Color(0xFFE5E7EB),
                 ),
               ),
               child: Row(
                 children: [
-                  const ShimmerSkeleton(width: 44, height: 44, borderRadius: AppSizes.radiusFull),
+                  const ShimmerSkeleton(
+                      width: 44, height: 44, borderRadius: AppSizes.radiusFull),
                   const SizedBox(width: AppSizes.p12),
                   Expanded(
                     child: Column(
@@ -292,9 +299,12 @@ class ShowcaseView extends GetView<ShowcaseController> {
             Text('Display Heading 2', style: AppTextStyles.h2),
             Text('Section Heading 3', style: AppTextStyles.h3),
             Text('Subheading 4', style: AppTextStyles.h4),
-            Text('Body Large - 16px Regular line height 1.5', style: AppTextStyles.bodyLarge),
-            Text('Body Medium - 14px Regular standard body', style: AppTextStyles.bodyMedium),
-            Text('Caption - 11px Muted metadata text', style: AppTextStyles.caption),
+            Text('Body Large - 16px Regular line height 1.5',
+                style: AppTextStyles.bodyLarge),
+            Text('Body Medium - 14px Regular standard body',
+                style: AppTextStyles.bodyMedium),
+            Text('Caption - 11px Muted metadata text',
+                style: AppTextStyles.caption),
 
             const SizedBox(height: AppSizes.p48),
           ],

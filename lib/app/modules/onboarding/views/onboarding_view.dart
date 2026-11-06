@@ -63,7 +63,8 @@ class OnboardingView extends GetView<OnboardingController> {
                         pages.length,
                         (index) => AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
-                          margin: const EdgeInsets.symmetric(horizontal: AppSizes.p4),
+                          margin: const EdgeInsets.symmetric(
+                              horizontal: AppSizes.p4),
                           width: controller.currentPage.value == index ? 24 : 8,
                           height: 8,
                           decoration: BoxDecoration(
@@ -94,4 +95,3 @@ class OnboardingView extends GetView<OnboardingController> {
     );
   }
 }
-

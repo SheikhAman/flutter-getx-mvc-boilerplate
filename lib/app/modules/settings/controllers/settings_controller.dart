@@ -22,4 +22,3 @@ class SettingsController extends GetxController {
     themeController.setPrimaryColorIndex(index);
   }
 }
-

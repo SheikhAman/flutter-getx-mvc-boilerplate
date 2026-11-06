@@ -7,4 +7,3 @@ class ShowcaseBinding extends Bindings {
     Get.lazyPut<ShowcaseController>(() => ShowcaseController());
   }
 }
-

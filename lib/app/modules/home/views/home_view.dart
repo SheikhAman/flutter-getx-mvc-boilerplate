@@ -98,7 +98,8 @@ class HomeView extends GetView<HomeController> {
           return const ShimmerListLoading();
         }
 
-        if (controller.errorMessage.value.isNotEmpty && controller.posts.isEmpty) {
+        if (controller.errorMessage.value.isNotEmpty &&
+            controller.posts.isEmpty) {
           return EmptyStateView.error(
             title: AppStrings.error.tr,
             subtitle: controller.errorMessage.value,
@@ -120,7 +121,8 @@ class HomeView extends GetView<HomeController> {
           child: ListView.builder(
             controller: controller.scrollController,
             physics: const AlwaysScrollableScrollPhysics(),
-            itemCount: controller.posts.length + (controller.hasMore.value ? 1 : 0),
+            itemCount:
+                controller.posts.length + (controller.hasMore.value ? 1 : 0),
             itemBuilder: (context, index) {
               if (index < controller.posts.length) {
                 return PostCard(post: controller.posts[index]);

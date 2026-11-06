@@ -98,7 +98,8 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       CircleAvatar(
                         radius: 48,
-                        backgroundColor: theme.colorScheme.primary.withAlpha(30),
+                        backgroundColor:
+                            theme.colorScheme.primary.withAlpha(30),
                         child: Text(
                           controller.user.name.isNotEmpty
                               ? controller.user.name[0].toUpperCase()
@@ -114,7 +115,8 @@ class ProfileView extends GetView<ProfileController> {
                         child: CircleAvatar(
                           radius: 16,
                           backgroundColor: theme.colorScheme.primary,
-                          child: const Icon(Icons.camera_alt_rounded, size: 16, color: Colors.white),
+                          child: const Icon(Icons.camera_alt_rounded,
+                              size: 16, color: Colors.white),
                         ),
                       ),
                     ],
@@ -131,13 +133,15 @@ class ProfileView extends GetView<ProfileController> {
                     () => Text(
                       controller.user.email,
                       style: AppTextStyles.bodyMedium.copyWith(
-                        color: theme.textTheme.bodyMedium?.color?.withAlpha(160),
+                        color:
+                            theme.textTheme.bodyMedium?.color?.withAlpha(160),
                       ),
                     ),
                   ),
                   const SizedBox(height: AppSizes.p8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: AppSizes.p12, vertical: AppSizes.p4),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSizes.p12, vertical: AppSizes.p4),
                     decoration: BoxDecoration(
                       color: theme.colorScheme.primary.withAlpha(20),
                       borderRadius: AppSizes.borderRadiusFull,
@@ -161,7 +165,9 @@ class ProfileView extends GetView<ProfileController> {
               shape: RoundedRectangleBorder(
                 borderRadius: AppSizes.borderRadiusMd,
                 side: BorderSide(
-                  color: isDark ? const Color(0xFF2C2C2C) : const Color(0xFFE5E7EB),
+                  color: isDark
+                      ? const Color(0xFF2C2C2C)
+                      : const Color(0xFFE5E7EB),
                 ),
               ),
               child: Column(
@@ -169,21 +175,24 @@ class ProfileView extends GetView<ProfileController> {
                   ListTile(
                     leading: const Icon(Icons.edit_outlined),
                     title: const Text('Edit Profile'),
-                    trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
+                    trailing:
+                        const Icon(Icons.arrow_forward_ios_rounded, size: 14),
                     onTap: () => _showEditSheet(context),
                   ),
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.settings_outlined),
                     title: Text(AppStrings.settings.tr),
-                    trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
+                    trailing:
+                        const Icon(Icons.arrow_forward_ios_rounded, size: 14),
                     onTap: () => Get.toNamed(AppRoutes.settings),
                   ),
                   const Divider(height: 1),
                   ListTile(
                     leading: const Icon(Icons.help_outline_rounded),
                     title: const Text('Help & Documentation'),
-                    trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
+                    trailing:
+                        const Icon(Icons.arrow_forward_ios_rounded, size: 14),
                     onTap: () => Get.toNamed(
                       AppRoutes.webview,
                       arguments: {
@@ -210,4 +219,3 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 }
-

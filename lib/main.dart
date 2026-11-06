@@ -22,7 +22,6 @@ import 'app/core/services/storage_service.dart';
 import 'app/core/services/theme_controller.dart';
 import 'app/core/values/app_strings.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

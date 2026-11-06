@@ -142,7 +142,8 @@ class AuthController extends GetxController {
       AppSnackbar.dismissLoading();
 
       if (!isValid) {
-        AppSnackbar.showError('Invalid code. Use ${ApiConstants.demoOtp} for demo.');
+        AppSnackbar.showError(
+            'Invalid code. Use ${ApiConstants.demoOtp} for demo.');
         return false;
       }
 
@@ -150,7 +151,9 @@ class AuthController extends GetxController {
           UserModel(
             id: 'usr_demo',
             name: 'Demo User',
-            email: pendingEmail.value.isNotEmpty ? pendingEmail.value : 'demo@fluttercore.dev',
+            email: pendingEmail.value.isNotEmpty
+                ? pendingEmail.value
+                : 'demo@fluttercore.dev',
             phone: pendingPhone.value,
             role: 'member',
           );
@@ -211,4 +214,3 @@ class AuthController extends GetxController {
     super.onClose();
   }
 }
-

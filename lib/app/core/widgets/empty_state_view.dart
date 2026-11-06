@@ -68,7 +68,9 @@ class EmptyStateView extends StatelessWidget {
             Text(
               subtitle ?? AppStrings.emptySub.tr,
               style: AppTextStyles.bodyMedium.copyWith(
-                color: isDark ? AppColors.textSecondaryDark : AppColors.textSecondaryLight,
+                color: isDark
+                    ? AppColors.textSecondaryDark
+                    : AppColors.textSecondaryLight,
               ),
               textAlign: TextAlign.center,
             ),
@@ -86,4 +88,3 @@ class EmptyStateView extends StatelessWidget {
     );
   }
 }
-

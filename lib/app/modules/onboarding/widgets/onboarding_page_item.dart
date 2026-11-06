@@ -54,4 +54,3 @@ class OnboardingPageItem extends StatelessWidget {
     );
   }
 }
-

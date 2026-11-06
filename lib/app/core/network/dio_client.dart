@@ -32,7 +32,8 @@ class DioClient {
   Dio get rawDio => _dio;
 
   // Generic request runner with automatic error translation
-  Future<T> _run<T>(Future<Response<T>> Function() request, {int maxRetries = 1}) async {
+  Future<T> _run<T>(Future<Response<T>> Function() request,
+      {int maxRetries = 1}) async {
     int attempts = 0;
     while (true) {
       try {
@@ -170,4 +171,3 @@ class DioClient {
         ));
   }
 }
-

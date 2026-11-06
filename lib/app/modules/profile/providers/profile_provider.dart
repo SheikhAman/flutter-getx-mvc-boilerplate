@@ -4,7 +4,8 @@ import '../../../data/models/user_model.dart';
 class ProfileProvider {
   final DioClient _dioClient;
 
-  ProfileProvider({DioClient? dioClient}) : _dioClient = dioClient ?? DioClient();
+  ProfileProvider({DioClient? dioClient})
+      : _dioClient = dioClient ?? DioClient();
 
   DioClient get client => _dioClient;
 

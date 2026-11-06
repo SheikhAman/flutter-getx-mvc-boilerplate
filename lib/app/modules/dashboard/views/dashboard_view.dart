@@ -36,22 +36,26 @@ class DashboardView extends GetView<DashboardController> {
           destinations: [
             NavigationDestination(
               icon: const Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home_rounded, color: theme.colorScheme.primary),
+              selectedIcon:
+                  Icon(Icons.home_rounded, color: theme.colorScheme.primary),
               label: AppStrings.home.tr,
             ),
             NavigationDestination(
               icon: const Icon(Icons.search_outlined),
-              selectedIcon: Icon(Icons.search_rounded, color: theme.colorScheme.primary),
+              selectedIcon:
+                  Icon(Icons.search_rounded, color: theme.colorScheme.primary),
               label: AppStrings.search.tr,
             ),
             NavigationDestination(
               icon: const Icon(Icons.palette_outlined),
-              selectedIcon: Icon(Icons.palette_rounded, color: theme.colorScheme.primary),
+              selectedIcon:
+                  Icon(Icons.palette_rounded, color: theme.colorScheme.primary),
               label: AppStrings.showcase.tr,
             ),
             NavigationDestination(
               icon: const Icon(Icons.person_outline_rounded),
-              selectedIcon: Icon(Icons.person_rounded, color: theme.colorScheme.primary),
+              selectedIcon:
+                  Icon(Icons.person_rounded, color: theme.colorScheme.primary),
               label: AppStrings.profile.tr,
             ),
           ],
@@ -60,4 +64,3 @@ class DashboardView extends GetView<DashboardController> {
     );
   }
 }
-

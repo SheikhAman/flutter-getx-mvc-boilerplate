@@ -30,7 +30,8 @@ class SearchView extends GetView<AppSearchController> {
                 suffixIcon: Obx(
                   () => controller.searchQuery.value.isNotEmpty
                       ? IconButton(
-                          icon: const Icon(Icons.clear_rounded, size: AppSizes.iconSm),
+                          icon: const Icon(Icons.clear_rounded,
+                              size: AppSizes.iconSm),
                           onPressed: controller.clearSearch,
                         )
                       : const SizedBox.shrink(),
@@ -58,7 +59,8 @@ class SearchView extends GetView<AppSearchController> {
                 return EmptyStateView(
                   icon: Icons.find_in_page_outlined,
                   title: AppStrings.noResults.tr,
-                  subtitle: 'No results found for "${controller.searchQuery.value}"',
+                  subtitle:
+                      'No results found for "${controller.searchQuery.value}"',
                 );
               }
 

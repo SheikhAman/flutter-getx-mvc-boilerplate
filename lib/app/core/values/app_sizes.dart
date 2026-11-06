@@ -22,7 +22,8 @@ class AppSizes {
 
   // Edge Insets Shortcuts
   static const EdgeInsets pagePadding = EdgeInsets.all(p16);
-  static const EdgeInsets pagePaddingHorizontal = EdgeInsets.symmetric(horizontal: p16);
+  static const EdgeInsets pagePaddingHorizontal =
+      EdgeInsets.symmetric(horizontal: p16);
   static const EdgeInsets cardPadding = EdgeInsets.all(p16);
   static const EdgeInsets dialogPadding = EdgeInsets.all(p24);
 
@@ -39,7 +40,8 @@ class AppSizes {
   static final BorderRadius borderRadiusMd = BorderRadius.circular(radiusMd);
   static final BorderRadius borderRadiusLg = BorderRadius.circular(radiusLg);
   static final BorderRadius borderRadiusXl = BorderRadius.circular(radiusXl);
-  static final BorderRadius borderRadiusFull = BorderRadius.circular(radiusFull);
+  static final BorderRadius borderRadiusFull =
+      BorderRadius.circular(radiusFull);
 
   // Icon Sizes
   static const double iconXs = 14.0;
@@ -62,4 +64,3 @@ class AppSizes {
   static const double breakpointTablet = 1024.0;
   static const double breakpointDesktop = 1440.0;
 }
-

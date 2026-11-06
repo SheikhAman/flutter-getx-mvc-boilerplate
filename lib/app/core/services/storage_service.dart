@@ -61,7 +61,8 @@ class StorageService extends GetxService {
     }
   }
 
-  bool get isLoggedIn => read<bool>(keyIsLoggedIn, defaultValue: false) ?? false;
+  bool get isLoggedIn =>
+      read<bool>(keyIsLoggedIn, defaultValue: false) ?? false;
   Future<void> setIsLoggedIn(bool value) async {
     await write(keyIsLoggedIn, value);
   }
@@ -87,24 +88,27 @@ class StorageService extends GetxService {
     await write(keyDarkMode, value);
   }
 
-  String get localeCode => read<String>(keyLocale, defaultValue: 'en_US') ?? 'en_US';
+  String get localeCode =>
+      read<String>(keyLocale, defaultValue: 'en_US') ?? 'en_US';
   Future<void> setLocaleCode(String code) async {
     await write(keyLocale, code);
   }
 
-  bool get isOnboardingSeen => read<bool>(keyOnboardingSeen, defaultValue: false) ?? false;
+  bool get isOnboardingSeen =>
+      read<bool>(keyOnboardingSeen, defaultValue: false) ?? false;
   Future<void> setOnboardingSeen(bool value) async {
     await write(keyOnboardingSeen, value);
   }
 
-  bool get isRememberMe => read<bool>(keyRememberMe, defaultValue: false) ?? false;
+  bool get isRememberMe =>
+      read<bool>(keyRememberMe, defaultValue: false) ?? false;
   Future<void> setRememberMe(bool value) async {
     await write(keyRememberMe, value);
   }
 
-  int get primaryColorIndex => read<int>(keyPrimaryColorIndex, defaultValue: 0) ?? 0;
+  int get primaryColorIndex =>
+      read<int>(keyPrimaryColorIndex, defaultValue: 0) ?? 0;
   Future<void> setPrimaryColorIndex(int index) async {
     await write(keyPrimaryColorIndex, index);
   }
 }
-

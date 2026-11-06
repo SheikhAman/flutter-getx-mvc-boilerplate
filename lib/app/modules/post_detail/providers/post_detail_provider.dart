@@ -5,7 +5,8 @@ import '../../../data/models/post_model.dart';
 class PostDetailProvider {
   final DioClient _dioClient;
 
-  PostDetailProvider({DioClient? dioClient}) : _dioClient = dioClient ?? DioClient();
+  PostDetailProvider({DioClient? dioClient})
+      : _dioClient = dioClient ?? DioClient();
 
   Future<PostModel> getPostDetail(int id) async {
     final response = await _dioClient.get('${ApiConstants.posts}/$id');
@@ -26,4 +27,3 @@ class PostDetailProvider {
     return [];
   }
 }
-

@@ -13,7 +13,8 @@ class NetworkInfo extends GetxService {
   void onInit() {
     super.onInit();
     checkConnection();
-    _subscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    _subscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
   Future<bool> checkConnection() async {
@@ -43,4 +44,3 @@ class NetworkInfo extends GetxService {
     super.onClose();
   }
 }
-

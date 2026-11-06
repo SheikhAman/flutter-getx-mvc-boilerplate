@@ -95,4 +95,3 @@ class AppTextStyles {
     letterSpacing: 1.0,
   );
 }
-

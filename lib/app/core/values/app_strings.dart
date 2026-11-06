@@ -128,7 +128,6 @@ class AppStrings extends Translations {
     alreadyHaveAccount: 'Already have an account? Sign In',
     dontHaveAccount: "Don't have an account? Sign Up",
     rememberMe: 'Remember Me',
-
     otpTitle: 'Verify Code',
     otpSubtitle: 'Enter the 6-digit verification code sent to your phone/email',
     otpHint: '6-digit code',
@@ -137,13 +136,11 @@ class AppStrings extends Translations {
     resend: 'Resend Code',
     resendIn: 'Resend in',
     demoOtpHint: 'Demo OTP: 112345',
-
     home: 'Home',
     search: 'Search',
     showcase: 'Showcase',
     profile: 'Profile',
     settings: 'Settings',
-
     continueText: 'Continue',
     submit: 'Submit',
     cancel: 'Cancel',
@@ -157,16 +154,17 @@ class AppStrings extends Translations {
     error: 'Error',
     warning: 'Warning',
     info: 'Information',
-
     onboarding1Title: 'High-Velocity Architecture',
-    onboarding1Desc: 'Built with production-proven Modular GetX MVC+S for rapid development and enterprise scale.',
+    onboarding1Desc:
+        'Built with production-proven Modular GetX MVC+S for rapid development and enterprise scale.',
     onboarding2Title: 'Enterprise Network Engine',
-    onboarding2Desc: 'Powered by Dio with automatic JWT injection, retry handlers, and typed responses.',
+    onboarding2Desc:
+        'Powered by Dio with automatic JWT injection, retry handlers, and typed responses.',
     onboarding3Title: 'Production Ready UI Kit',
-    onboarding3Desc: 'Beautiful responsive components, dark mode, multi-language support, and component gallery.',
+    onboarding3Desc:
+        'Beautiful responsive components, dark mode, multi-language support, and component gallery.',
     getStarted: 'Get Started',
     skip: 'Skip',
-
     recentPosts: 'Recent Posts',
     createPost: 'Create Post',
     postTitle: 'Post Title',
@@ -174,12 +172,10 @@ class AppStrings extends Translations {
     postDetail: 'Post Detail',
     noPostsFound: 'No posts found',
     loadMore: 'Load More',
-
     searchHint: 'Search posts, users, or topics...',
     searchResults: 'Search Results',
     noResults: 'No matches found',
     typeToSearch: 'Type keywords above to begin searching',
-
     appearance: 'Appearance',
     darkMode: 'Dark Mode',
     lightMode: 'Light Mode',
@@ -189,16 +185,17 @@ class AppStrings extends Translations {
     primaryColor: 'Primary Accent Color',
     aboutApp: 'About Flutter Core',
     version: 'Version 1.0.0',
-
     networkError: 'No Internet Connection',
-    networkErrorSub: 'Please check your connection and tap retry to load again.',
+    networkErrorSub:
+        'Please check your connection and tap retry to load again.',
     emptyTitle: 'No Records Found',
-    emptySub: 'There is nothing here yet. Tap below to refresh or create new item.',
+    emptySub:
+        'There is nothing here yet. Tap below to refresh or create new item.',
     notFoundTitle: 'Page Not Found',
-    notFoundSub: 'The page you are looking for does not exist or has been moved.',
+    notFoundSub:
+        'The page you are looking for does not exist or has been moved.',
     backToHome: 'Back to Home',
     webview: 'Web Browser',
-
     fieldRequired: 'This field is required',
     invalidEmail: 'Enter a valid email address',
     invalidPhone: 'Enter a valid phone number',
@@ -224,7 +221,6 @@ class AppStrings extends Translations {
     alreadyHaveAccount: 'ইতিমধ্যে অ্যাকাউন্ট আছে? সাইন ইন করুন',
     dontHaveAccount: 'অ্যাকাউন্ট নেই? সাইন আপ করুন',
     rememberMe: 'মনে রাখুন',
-
     otpTitle: 'কোড যাচাই করুন',
     otpSubtitle: 'আপনার মোবাইল বা ইমেইলে পাঠানো ৬ অঙ্কের কোড লিখুন',
     otpHint: '৬ অঙ্কের কোড',
@@ -233,13 +229,11 @@ class AppStrings extends Translations {
     resend: 'পুনরায় কোড পাঠান',
     resendIn: 'পুনরায় পাঠানো যাবে',
     demoOtpHint: 'ডেমো ওটিপি: ১১২৩৪৫',
-
     home: 'হোম',
     search: 'অনুসন্ধান',
     showcase: 'শোকেস',
     profile: 'প্রোফাইল',
     settings: 'সেটিংস',
-
     continueText: 'চালিয়ে যান',
     submit: 'সাবমিট করুন',
     cancel: 'বাতিল',
@@ -253,16 +247,17 @@ class AppStrings extends Translations {
     error: 'ত্রুটি',
     warning: 'সতর্কতা',
     info: 'তথ্য',
-
     onboarding1Title: 'উচ্চগতির আর্কিটেকচার',
-    onboarding1Desc: 'প্রোডাকশন-প্রুভেন গেটএক্স এমভিসি+এস কাঠামো যা অত্যন্ত দ্রুত এবং স্কেলেবল।',
+    onboarding1Desc:
+        'প্রোডাকশন-প্রুভেন গেটএক্স এমভিসি+এস কাঠামো যা অত্যন্ত দ্রুত এবং স্কেলেবল।',
     onboarding2Title: 'এন্টারপ্রাইজ নেটওয়ার্ক ইঞ্জিন',
-    onboarding2Desc: 'ডিও (Dio) চালিত স্বয়ংক্রিয় টোকেন ও ত্রুটি হ্যান্ডলার সহ দ্রুততম নেটওয়ার্কিং।',
+    onboarding2Desc:
+        'ডিও (Dio) চালিত স্বয়ংক্রিয় টোকেন ও ত্রুটি হ্যান্ডলার সহ দ্রুততম নেটওয়ার্কিং।',
     onboarding3Title: 'প্রোডাকশন রেডি ইউআই কিট',
-    onboarding3Desc: 'ডার্ক মোড, বহুভাষিক সাপোর্ট এবং কম্পোনেন্ট শোকেস সহ আধুনিক ডিজাইন।',
+    onboarding3Desc:
+        'ডার্ক মোড, বহুভাষিক সাপোর্ট এবং কম্পোনেন্ট শোকেস সহ আধুনিক ডিজাইন।',
     getStarted: 'শুরু করুন',
     skip: 'এড়িয়ে যান',
-
     recentPosts: 'সাম্প্রতিক পোস্টসমূহ',
     createPost: 'নতুন পোস্ট',
     postTitle: 'পোস্টের শিরোনাম',
@@ -270,12 +265,10 @@ class AppStrings extends Translations {
     postDetail: 'পোস্টের বিস্তারিত',
     noPostsFound: 'কোন পোস্ট পাওয়া যায়নি',
     loadMore: 'আরও দেখুন',
-
     searchHint: 'পোস্ট, ব্যবহারকারী বা বিষয় অনুসন্ধান করুন...',
     searchResults: 'অনুসন্ধানের ফলাফল',
     noResults: 'কোন ফলাফল পাওয়া যায়নি',
     typeToSearch: 'অনুসন্ধান শুরু করতে টাইপ করুন',
-
     appearance: 'চেহারা ও রূপ',
     darkMode: 'ডার্ক মোড',
     lightMode: 'লাইট মোড',
@@ -285,7 +278,6 @@ class AppStrings extends Translations {
     primaryColor: 'মূল রঙ',
     aboutApp: 'ফ্লাটার কোর সম্পর্কে',
     version: 'সংস্করণ ১.০.০',
-
     networkError: 'ইন্টারনেট সংযোগ নেই',
     networkErrorSub: 'আপনার সংযোগ চেক করুন এবং পুনরায় চেষ্টা করতে ট্যাপ করুন।',
     emptyTitle: 'কোন তথ্য নেই',
@@ -294,7 +286,6 @@ class AppStrings extends Translations {
     notFoundSub: 'আপনি যে পৃষ্ঠাটি খুঁজছেন তা বিদ্যমান নেই বা সরানো হয়েছে।',
     backToHome: 'হোমে ফিরে যান',
     webview: 'ওয়েব ব্রাউজার',
-
     fieldRequired: 'এই ঘরটি পূরণ করা আবশ্যক',
     invalidEmail: 'একটি সঠিক ইমেইল ঠিকানা দিন',
     invalidPhone: 'একটি সঠিক ফোন নম্বর দিন',
@@ -303,4 +294,3 @@ class AppStrings extends Translations {
     invalidOtp: 'ভুল ওটিপি কোড',
   };
 }
-

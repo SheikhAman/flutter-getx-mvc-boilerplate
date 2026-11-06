@@ -22,9 +22,12 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: (json['id'] ?? json['_id'] ?? '').toString(),
-      name: (json['name'] ?? json['fullName'] ?? json['full_name'] ?? '').toString(),
+      name: (json['name'] ?? json['fullName'] ?? json['full_name'] ?? '')
+          .toString(),
       email: (json['email'] ?? '').toString(),
-      phone: (json['phone'] ?? json['phoneNumber'] ?? json['phone_number'] ?? '').toString(),
+      phone:
+          (json['phone'] ?? json['phoneNumber'] ?? json['phone_number'] ?? '')
+              .toString(),
       avatar: json['avatar'] as String? ?? json['image'] as String?,
       role: json['role'] as String? ?? 'user',
       token: json['token'] as String?,
@@ -90,4 +93,3 @@ class UserModel {
   @override
   int get hashCode => id.hashCode ^ email.hashCode;
 }
-

@@ -15,7 +15,8 @@ class DashboardBinding extends Bindings {
 
     // Tab dependencies
     Get.lazyPut<HomeProvider>(() => HomeProvider());
-    Get.lazyPut<HomeController>(() => HomeController(homeProvider: Get.find<HomeProvider>()));
+    Get.lazyPut<HomeController>(
+        () => HomeController(homeProvider: Get.find<HomeProvider>()));
 
     Get.lazyPut<SearchProvider>(() => SearchProvider());
     Get.lazyPut<AppSearchController>(
@@ -30,4 +31,3 @@ class DashboardBinding extends Bindings {
     );
   }
 }
-

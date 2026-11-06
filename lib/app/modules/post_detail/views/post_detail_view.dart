@@ -22,7 +22,8 @@ class PostDetailView extends GetView<PostDetailController> {
           return const LoadingView(message: 'Loading post details...');
         }
 
-        if (controller.errorMessage.value.isNotEmpty && controller.post.value == null) {
+        if (controller.errorMessage.value.isNotEmpty &&
+            controller.post.value == null) {
           return EmptyStateView.error(
             title: AppStrings.error.tr,
             subtitle: controller.errorMessage.value,
@@ -43,7 +44,8 @@ class PostDetailView extends GetView<PostDetailController> {
               expandedHeight: 180.0,
               pinned: true,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new_rounded, size: AppSizes.iconSm),
+                icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                    size: AppSizes.iconSm),
                 onPressed: () => Get.back(),
               ),
               actions: [
@@ -100,7 +102,8 @@ class PostDetailView extends GetView<PostDetailController> {
                       children: [
                         CircleAvatar(
                           radius: 22,
-                          backgroundColor: theme.colorScheme.primary.withAlpha(30),
+                          backgroundColor:
+                              theme.colorScheme.primary.withAlpha(30),
                           child: Text(
                             '#${post.userId}',
                             style: AppTextStyles.titleMedium.copyWith(
@@ -139,7 +142,9 @@ class PostDetailView extends GetView<PostDetailController> {
                               Icon(
                                 Icons.favorite_rounded,
                                 size: 14,
-                                color: controller.isLiked.value ? Colors.red : theme.colorScheme.primary,
+                                color: controller.isLiked.value
+                                    ? Colors.red
+                                    : theme.colorScheme.primary,
                               ),
                               const SizedBox(width: AppSizes.p4),
                               Text(
@@ -217,10 +222,14 @@ class PostDetailView extends GetView<PostDetailController> {
                       ),
                       padding: const EdgeInsets.all(AppSizes.p16),
                       decoration: BoxDecoration(
-                        color: isDark ? const Color(0xFF1E1E1E) : const Color(0xFFF9FAFB),
+                        color: isDark
+                            ? const Color(0xFF1E1E1E)
+                            : const Color(0xFFF9FAFB),
                         borderRadius: AppSizes.borderRadiusMd,
                         border: Border.all(
-                          color: isDark ? const Color(0xFF2E2E2E) : const Color(0xFFE5E7EB),
+                          color: isDark
+                              ? const Color(0xFF2E2E2E)
+                              : const Color(0xFFE5E7EB),
                         ),
                       ),
                       child: Column(
@@ -230,9 +239,11 @@ class PostDetailView extends GetView<PostDetailController> {
                             children: [
                               CircleAvatar(
                                 radius: 14,
-                                backgroundColor: theme.colorScheme.primary.withAlpha(25),
+                                backgroundColor:
+                                    theme.colorScheme.primary.withAlpha(25),
                                 child: Text(
-                                  (comment['name'] as String? ?? 'U')[0].toUpperCase(),
+                                  (comment['name'] as String? ?? 'U')[0]
+                                      .toUpperCase(),
                                   style: AppTextStyles.titleSmall.copyWith(
                                     color: theme.colorScheme.primary,
                                   ),
@@ -250,7 +261,8 @@ class PostDetailView extends GetView<PostDetailController> {
                           ),
                           const SizedBox(height: AppSizes.p8),
                           Text(
-                            Formatters.capitalize(comment['name']?.toString() ?? ''),
+                            Formatters.capitalize(
+                                comment['name']?.toString() ?? ''),
                             style: AppTextStyles.titleMedium,
                           ),
                           const SizedBox(height: AppSizes.p4),
@@ -274,4 +286,3 @@ class PostDetailView extends GetView<PostDetailController> {
     );
   }
 }
-

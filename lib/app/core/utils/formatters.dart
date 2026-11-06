@@ -9,7 +9,8 @@ class Formatters {
     return DateFormat(pattern).format(date);
   }
 
-  static String formatDateTime(DateTime? dateTime, {String pattern = 'dd MMM yyyy, hh:mm a'}) {
+  static String formatDateTime(DateTime? dateTime,
+      {String pattern = 'dd MMM yyyy, hh:mm a'}) {
     if (dateTime == null) return '';
     return DateFormat(pattern).format(dateTime);
   }
@@ -39,7 +40,8 @@ class Formatters {
   }
 
   // Currency Formatters
-  static String formatCurrency(num? amount, {String symbol = '\$', int decimalDigits = 2}) {
+  static String formatCurrency(num? amount,
+      {String symbol = '\$', int decimalDigits = 2}) {
     if (amount == null) return '$symbol 0.00';
     final formatter = NumberFormat.currency(
       symbol: symbol,
@@ -75,4 +77,3 @@ class Formatters {
     return NumberFormat.compact().format(number);
   }
 }
-

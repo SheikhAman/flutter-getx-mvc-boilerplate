@@ -37,7 +37,8 @@ class SettingsView extends GetView<SettingsController> {
             shape: RoundedRectangleBorder(
               borderRadius: AppSizes.borderRadiusMd,
               side: BorderSide(
-                color: isDark ? const Color(0xFF2C2C2C) : const Color(0xFFE5E7EB),
+                color:
+                    isDark ? const Color(0xFF2C2C2C) : const Color(0xFFE5E7EB),
               ),
             ),
             child: Column(
@@ -102,7 +103,8 @@ class SettingsView extends GetView<SettingsController> {
                             AppColors.seeds.length,
                             (index) {
                               final seed = AppColors.seeds[index];
-                              final isSelected = controller.primaryColorIndex == index;
+                              final isSelected =
+                                  controller.primaryColorIndex == index;
                               return GestureDetector(
                                 onTap: () => controller.selectColorSeed(index),
                                 child: AnimatedContainer(
@@ -114,7 +116,9 @@ class SettingsView extends GetView<SettingsController> {
                                     shape: BoxShape.circle,
                                     border: isSelected
                                         ? Border.all(
-                                            color: isDark ? Colors.white : Colors.black,
+                                            color: isDark
+                                                ? Colors.white
+                                                : Colors.black,
                                             width: 3,
                                           )
                                         : null,
@@ -128,7 +132,8 @@ class SettingsView extends GetView<SettingsController> {
                                     ],
                                   ),
                                   child: isSelected
-                                      ? const Icon(Icons.check, color: Colors.white, size: 20)
+                                      ? const Icon(Icons.check,
+                                          color: Colors.white, size: 20)
                                       : null,
                                 ),
                               );
@@ -159,7 +164,8 @@ class SettingsView extends GetView<SettingsController> {
             shape: RoundedRectangleBorder(
               borderRadius: AppSizes.borderRadiusMd,
               side: BorderSide(
-                color: isDark ? const Color(0xFF2C2C2C) : const Color(0xFFE5E7EB),
+                color:
+                    isDark ? const Color(0xFF2C2C2C) : const Color(0xFFE5E7EB),
               ),
             ),
             child: Column(
@@ -167,9 +173,11 @@ class SettingsView extends GetView<SettingsController> {
                 ListTile(
                   leading: const Icon(Icons.info_outline_rounded),
                   title: Text(AppStrings.appName.tr),
-                  subtitle: const Text('Enterprise GetX Modular MVC+S Boilerplate'),
+                  subtitle:
+                      const Text('Enterprise GetX Modular MVC+S Boilerplate'),
                   trailing: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
                       color: theme.colorScheme.primary.withAlpha(20),
                       borderRadius: AppSizes.borderRadiusFull,
@@ -187,7 +195,8 @@ class SettingsView extends GetView<SettingsController> {
                 ListTile(
                   leading: const Icon(Icons.code_rounded),
                   title: const Text('Architecture'),
-                  subtitle: const Text('Modular GetX MVC+S (Model-View-Controller-Service)'),
+                  subtitle: const Text(
+                      'Modular GetX MVC+S (Model-View-Controller-Service)'),
                 ),
               ],
             ),
@@ -197,4 +206,3 @@ class SettingsView extends GetView<SettingsController> {
     );
   }
 }
-

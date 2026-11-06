@@ -84,4 +84,3 @@ class AppColors {
     return seeds[index];
   }
 }
-

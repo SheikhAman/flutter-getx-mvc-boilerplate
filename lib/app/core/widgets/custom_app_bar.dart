@@ -38,12 +38,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             style: AppTextStyles.h4,
           ),
       centerTitle: centerTitle,
-      backgroundColor: backgroundColor ?? Theme.of(context).appBarTheme.backgroundColor,
+      backgroundColor:
+          backgroundColor ?? Theme.of(context).appBarTheme.backgroundColor,
       elevation: elevation,
       leading: leading ??
           (showBackButton && Navigator.canPop(context)
               ? IconButton(
-                  icon: const Icon(Icons.arrow_back_ios_new_rounded, size: AppSizes.iconSm),
+                  icon: const Icon(Icons.arrow_back_ios_new_rounded,
+                      size: AppSizes.iconSm),
                   onPressed: onBackPressed ?? () => Get.back(),
                 )
               : null),
@@ -57,4 +59,3 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         AppSizes.appBarHeight + (bottom?.preferredSize.height ?? 0.0),
       );
 }
-

@@ -26,4 +26,3 @@ class ApiConstants {
   // Demo Dummy Data
   static const String demoOtp = '112345';
 }
-

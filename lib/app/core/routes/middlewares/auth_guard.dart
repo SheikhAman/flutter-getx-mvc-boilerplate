@@ -21,4 +21,3 @@ class AuthGuard extends GetMiddleware {
     return null;
   }
 }
-

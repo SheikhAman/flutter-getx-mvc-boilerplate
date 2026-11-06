@@ -91,11 +91,17 @@ class OtpView extends GetView<AuthController> {
                   borderRadius: AppSizes.borderRadiusMd,
                   fieldHeight: 52,
                   fieldWidth: 44,
-                  activeFillColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                  inactiveFillColor: isDark ? const Color(0xFF1E1E1E) : const Color(0xFFF9FAFB),
-                  selectedFillColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                  activeFillColor:
+                      isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                  inactiveFillColor: isDark
+                      ? const Color(0xFF1E1E1E)
+                      : const Color(0xFFF9FAFB),
+                  selectedFillColor:
+                      isDark ? const Color(0xFF1E1E1E) : Colors.white,
                   activeColor: theme.colorScheme.primary,
-                  inactiveColor: isDark ? const Color(0xFF374151) : const Color(0xFFE5E7EB),
+                  inactiveColor: isDark
+                      ? const Color(0xFF374151)
+                      : const Color(0xFFE5E7EB),
                   selectedColor: theme.colorScheme.primary,
                   borderWidth: 1.5,
                 ),
@@ -140,7 +146,8 @@ class OtpView extends GetView<AuthController> {
                     : Text(
                         '${AppStrings.resendIn.tr} ${controller.timerSeconds.value}s',
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: theme.textTheme.bodyMedium?.color?.withAlpha(140),
+                          color:
+                              theme.textTheme.bodyMedium?.color?.withAlpha(140),
                         ),
                       ),
               ),
@@ -151,4 +158,3 @@ class OtpView extends GetView<AuthController> {
     );
   }
 }
-

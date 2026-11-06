@@ -7,8 +7,8 @@ class PostDetailBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<PostDetailProvider>(() => PostDetailProvider());
     Get.lazyPut<PostDetailController>(
-      () => PostDetailController(postDetailProvider: Get.find<PostDetailProvider>()),
+      () => PostDetailController(
+          postDetailProvider: Get.find<PostDetailProvider>()),
     );
   }
 }
-

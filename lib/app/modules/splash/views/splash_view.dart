@@ -65,7 +65,8 @@ class SplashView extends GetView<SplashController> {
               height: 32,
               child: CircularProgressIndicator(
                 strokeWidth: 2.5,
-                valueColor: AlwaysStoppedAnimation<Color>(theme.colorScheme.primary),
+                valueColor:
+                    AlwaysStoppedAnimation<Color>(theme.colorScheme.primary),
               ),
             ),
           ],
@@ -74,4 +75,3 @@ class SplashView extends GetView<SplashController> {
     );
   }
 }
-

@@ -11,4 +11,3 @@ class SearchBinding extends Bindings {
     );
   }
 }
-

@@ -8,4 +8,3 @@ class AppAssets {
   // Fallback / Icons
   static const String placeholder = 'assets/logo.png';
 }
-

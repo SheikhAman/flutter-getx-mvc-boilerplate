@@ -22,4 +22,3 @@ class UnknownRouteView extends StatelessWidget {
     );
   }
 }
-

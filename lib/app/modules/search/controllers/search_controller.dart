@@ -62,4 +62,3 @@ class AppSearchController extends GetxController {
     super.onClose();
   }
 }
-

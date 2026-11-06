@@ -21,4 +21,3 @@ class OnboardingGuard extends GetMiddleware {
     return null;
   }
 }
-

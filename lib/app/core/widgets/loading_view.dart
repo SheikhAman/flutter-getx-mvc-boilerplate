@@ -56,8 +56,11 @@ class ShimmerSkeleton extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Shimmer.fromColors(
-      baseColor: isDark ? AppColors.shimmerBaseDark : AppColors.shimmerBaseLight,
-      highlightColor: isDark ? AppColors.shimmerHighlightDark : AppColors.shimmerHighlightLight,
+      baseColor:
+          isDark ? AppColors.shimmerBaseDark : AppColors.shimmerBaseLight,
+      highlightColor: isDark
+          ? AppColors.shimmerHighlightDark
+          : AppColors.shimmerHighlightLight,
       child: Container(
         width: width,
         height: height,
@@ -98,7 +101,8 @@ class ShimmerListLoading extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const ShimmerSkeleton(width: 40, height: 40, borderRadius: AppSizes.radiusFull),
+                  const ShimmerSkeleton(
+                      width: 40, height: 40, borderRadius: AppSizes.radiusFull),
                   const SizedBox(width: AppSizes.p12),
                   Expanded(
                     child: Column(
@@ -123,4 +127,3 @@ class ShimmerListLoading extends StatelessWidget {
     );
   }
 }
-

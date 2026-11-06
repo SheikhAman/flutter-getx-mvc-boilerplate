@@ -22,4 +22,3 @@ class NoInternetView extends GetView<CommonController> {
     );
   }
 }
-

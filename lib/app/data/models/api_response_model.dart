@@ -18,7 +18,10 @@ class ApiResponse<T> {
     T Function(dynamic json)? fromJsonT,
   ) {
     return ApiResponse<T>(
-      success: json['success'] as bool? ?? (json['status'] == 'success' || json['status'] == 200 || json['error'] == null),
+      success: json['success'] as bool? ??
+          (json['status'] == 'success' ||
+              json['status'] == 200 ||
+              json['error'] == null),
       message: json['message'] as String?,
       statusCode: json['statusCode'] as int? ?? json['status_code'] as int?,
       errors: json['errors'] ?? json['error'],
@@ -38,4 +41,3 @@ class ApiResponse<T> {
     };
   }
 }
-

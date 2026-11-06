@@ -19,18 +19,26 @@ class PostModel {
 
   factory PostModel.fromJson(Map<String, dynamic> json) {
     return PostModel(
-      id: (json['id'] is int) ? json['id'] as int : int.tryParse(json['id'].toString()) ?? 0,
+      id: (json['id'] is int)
+          ? json['id'] as int
+          : int.tryParse(json['id'].toString()) ?? 0,
       userId: (json['userId'] is int)
           ? json['userId'] as int
           : (json['user_id'] is int)
               ? json['user_id'] as int
-              : int.tryParse(json['userId']?.toString() ?? json['user_id']?.toString() ?? '1') ?? 1,
+              : int.tryParse(json['userId']?.toString() ??
+                      json['user_id']?.toString() ??
+                      '1') ??
+                  1,
       title: (json['title'] ?? '').toString(),
       body: (json['body'] ?? '').toString(),
-      authorName: json['authorName'] as String? ?? json['author'] as String? ?? 'Author #${json['userId'] ?? 1}',
+      authorName: json['authorName'] as String? ??
+          json['author'] as String? ??
+          'Author #${json['userId'] ?? 1}',
       createdAt: json['createdAt'] != null
           ? DateTime.tryParse(json['createdAt'].toString())
-          : DateTime.now().subtract(Duration(hours: ((json['id'] is int ? json['id'] : 1) as int) % 48)),
+          : DateTime.now().subtract(Duration(
+              hours: ((json['id'] is int ? json['id'] : 1) as int) % 48)),
       likesCount: (json['likesCount'] is int)
           ? json['likesCount'] as int
           : ((json['id'] is int ? json['id'] : 1) as int) * 7 % 100,
@@ -72,11 +80,8 @@ class PostModel {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PostModel &&
-          runtimeType == other.runtimeType &&
-          id == other.id;
+      other is PostModel && runtimeType == other.runtimeType && id == other.id;
 
   @override
   int get hashCode => id.hashCode;
 }
-

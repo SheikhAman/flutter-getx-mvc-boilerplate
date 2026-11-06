@@ -45,4 +45,3 @@ class LocaleService extends GetxService {
     }
   }
 }
-
