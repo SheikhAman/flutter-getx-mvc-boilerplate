@@ -32,7 +32,7 @@ Verified features implemented directly in this codebase:
 * **Home Feed with Pagination:** REST integration with [JSONPlaceholder](https://jsonplaceholder.typicode.com) featuring page-based pagination, infinite scroll listener, and pull-to-refresh.
 * **Post Details:** Dedicated detail view displaying post payload and user interactions.
 * **Debounced Search:** Real-time search query execution with an automated 400ms debounce worker (`debounce(searchQuery, ...)`).
-* **User Profile & State:** User metadata inspection, profile update simulation, and session management.
+* **User Profile & Avatar:** User metadata inspection, profile edit modal bottom sheet, reactive avatar initials, camera/gallery image picker with local persistence via `GetStorage`, and session management.
 * **Dynamic Material 3 Theming:** Dark/light mode switching paired with **6 distinct primary color seeds** persisted locally via `GetStorage`.
 * **Localization (i18n):** Instant runtime switching between **English (`en_US`)** and **Bengali (`bn_BD`)**.
 * **Robust Networking (Dio):** Singleton `DioClient` with automated retries (timeouts & connection errors), JWT bearer token interceptor, centralized logging, and `ApiException` translation.
@@ -263,7 +263,7 @@ This repository enforces automated quality gates via GitHub Actions on every com
 
 * **Code Formatting:** `dart format --output=none --set-exit-if-changed .`
 * **Static Analysis:** `flutter analyze` (Zero errors, zero warnings enforced)
-* **Automated Test Suite:** 31 automated tests passing with **30.67%** full codebase line coverage (645 / 2,103 lines hit measured across the entire application via `flutter test --coverage`).
+* **Automated Test Suite:** 35 automated tests passing with **37.67%** full codebase line coverage (814 / 2,161 lines hit measured across the entire application via `flutter test --coverage`).
 
 ### Test Suite Structure
 | Test Suite | File | Tests | Focus Area |
@@ -275,6 +275,7 @@ This repository enforces automated quality gates via GitHub Actions on every com
 | **Custom Button** | `test/widget/custom_button_test.dart` | 4 | Label rendering, tap callback, loading spinner, and icon |
 | **Custom Text Field** | `test/widget/custom_text_field_test.dart` | 4 | Text entry, label/hint, password eye toggle, and prefix icon |
 | **Post Card** | `test/widget/post_card_test.dart` | 2 | Layout rendering, author badge, metrics, and route navigation |
+| **Profile View & Logic** | `test/widget/profile_view_test.dart` | 4 | Bottom sheet dismiss, reactive avatar initial, camera chooser, storage persistence, permission handling |
 | **Splash & Bootstrap** | `test/widget/splash_transition_test.dart` | 1 | Full application boot, zero white screens, Splash to Onboarding transition |
 
 To run the complete test suite locally:
