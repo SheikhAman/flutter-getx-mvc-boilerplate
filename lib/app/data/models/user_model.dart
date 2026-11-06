@@ -88,8 +88,12 @@ class UserModel {
       other is UserModel &&
           runtimeType == other.runtimeType &&
           id == other.id &&
-          email == other.email;
+          name == other.name &&
+          email == other.email &&
+          phone == other.phone &&
+          avatar == other.avatar &&
+          role == other.role;
 
   @override
-  int get hashCode => id.hashCode ^ email.hashCode;
+  int get hashCode => Object.hash(id, name, email, phone, avatar, role);
 }
