@@ -263,13 +263,14 @@ This repository enforces automated quality gates via GitHub Actions on every com
 
 * **Code Formatting:** `dart format --output=none --set-exit-if-changed .`
 * **Static Analysis:** `flutter analyze` (Zero errors, zero warnings enforced)
-* **Automated Test Suite:** 35 automated tests passing with **37.67%** full codebase line coverage (814 / 2,161 lines hit measured across the entire application via `flutter test --coverage`).
+* **Automated Test Suite:** 40 automated tests passing with **40.74%** full codebase line coverage (884 / 2,170 lines hit measured across the entire application via `flutter test --coverage`).
 
 ### Test Suite Structure
 | Test Suite | File | Tests | Focus Area |
 | :--- | :--- | :---: | :--- |
 | **Core Primitives** | `test/widget_test.dart` | 5 | Validators, formatters, API constants, UserModel & PostModel serialization |
-| **Home Controller** | `test/unit/controllers/home_controller_test.dart` | 4 | Initial fetch, pull-to-refresh, error states, and pagination |
+| **Home Controller** | `test/unit/controllers/home_controller_test.dart` | 7 | Initial fetch, pull-to-refresh, pagination, post creation, and double-submit guard |
+| **Home View & Create Post** | `test/widget/home_view_test.dart` | 2 | Bottom sheet dismiss, top-of-feed insertion, and double-submit guard |
 | **Search Controller** | `test/unit/controllers/search_controller_test.dart` | 4 | Debounced 400ms search worker, state clearing, query reactivity |
 | **Auth Controller** | `test/unit/controllers/auth_controller_test.dart` | 7 | Mock login, registration, OTP validation, timer management, reset flow |
 | **Custom Button** | `test/widget/custom_button_test.dart` | 4 | Label rendering, tap callback, loading spinner, and icon |
