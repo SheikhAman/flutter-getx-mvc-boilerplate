@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/routes/app_routes.dart';
@@ -96,27 +97,44 @@ class ProfileView extends GetView<ProfileController> {
                 children: [
                   Stack(
                     children: [
-                      CircleAvatar(
-                        radius: 48,
-                        backgroundColor:
-                            theme.colorScheme.primary.withAlpha(30),
-                        child: Text(
-                          controller.user.name.isNotEmpty
-                              ? controller.user.name[0].toUpperCase()
-                              : 'U',
-                          style: AppTextStyles.h1.copyWith(
-                            color: theme.colorScheme.primary,
-                          ),
-                        ),
-                      ),
+                      Obx(() {
+                        final photoPath = controller.avatarPath.value;
+                        final hasPhoto = photoPath != null &&
+                            photoPath.isNotEmpty &&
+                            File(photoPath).existsSync();
+
+                        return CircleAvatar(
+                          radius: 48,
+                          backgroundColor:
+                              theme.colorScheme.primary.withAlpha(30),
+                          backgroundImage:
+                              hasPhoto ? FileImage(File(photoPath)) : null,
+                          child: hasPhoto
+                              ? null
+                              : Text(
+                                  controller.user.name.isNotEmpty
+                                      ? controller.user.name[0].toUpperCase()
+                                      : 'U',
+                                  style: AppTextStyles.h1.copyWith(
+                                    color: theme.colorScheme.primary,
+                                  ),
+                                ),
+                        );
+                      }),
                       Positioned(
                         bottom: 0,
                         right: 0,
-                        child: CircleAvatar(
-                          radius: 16,
-                          backgroundColor: theme.colorScheme.primary,
-                          child: const Icon(Icons.camera_alt_rounded,
-                              size: 16, color: Colors.white),
+                        child: GestureDetector(
+                          onTap: controller.showImageSourcePicker,
+                          child: CircleAvatar(
+                            radius: 16,
+                            backgroundColor: theme.colorScheme.primary,
+                            child: const Icon(
+                              Icons.camera_alt_rounded,
+                              size: 16,
+                              color: Colors.white,
+                            ),
+                          ),
                         ),
                       ),
                     ],

@@ -15,6 +15,7 @@ class StorageService extends GetxService {
   static const String keyOnboardingSeen = 'onboarding_seen';
   static const String keyRememberMe = 'remember_me';
   static const String keyPrimaryColorIndex = 'primary_color_index';
+  static const String keyAvatarPath = 'avatar_path';
 
   static Future<StorageService> init() async {
     await GetStorage.init();
@@ -110,5 +111,14 @@ class StorageService extends GetxService {
       read<int>(keyPrimaryColorIndex, defaultValue: 0) ?? 0;
   Future<void> setPrimaryColorIndex(int index) async {
     await write(keyPrimaryColorIndex, index);
+  }
+
+  String? get avatarPath => read<String>(keyAvatarPath);
+  Future<void> setAvatarPath(String? path) async {
+    if (path == null) {
+      await remove(keyAvatarPath);
+    } else {
+      await write(keyAvatarPath, path);
+    }
   }
 }

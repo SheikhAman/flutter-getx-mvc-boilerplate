@@ -1,5 +1,5 @@
 name: flutter_core
-description: Master Flutter API boilerplate — custom widgets, auth OTP, Dio networking, showcase gallery.
+description: Production-ready Flutter boilerplate using Modular GetX (MVC+S) — scalable architecture, reusable widgets, responsive UI, and modern development practices.
 publish_to: none
 
 version: 1.0.0+1
@@ -27,6 +27,7 @@ dependencies:
   intl: ^0.20.2
   path_provider: ^2.1.5
   pin_code_fields: ^8.0.1
+  image_picker: ^1.1.2
 
 dev_dependencies:
   flutter_test:
