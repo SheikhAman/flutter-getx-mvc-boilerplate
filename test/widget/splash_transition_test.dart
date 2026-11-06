@@ -1,5 +1,4 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_core/app/core/routes/app_routes.dart';
 import 'package:flutter_core/app/core/services/auth_service.dart';
 import 'package:flutter_core/app/core/services/locale_service.dart';
 import 'package:flutter_core/app/core/services/storage_service.dart';
