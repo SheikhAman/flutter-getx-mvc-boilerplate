@@ -263,7 +263,7 @@ This repository enforces automated quality gates via GitHub Actions on every com
 
 * **Code Formatting:** `dart format --output=none --set-exit-if-changed .`
 * **Static Analysis:** `flutter analyze` (Zero errors, zero warnings enforced)
-* **Automated Test Suite:** 30 automated tests passing with **51.97%** measured line coverage (396/762 lines hit via `flutter test --coverage`).
+* **Automated Test Suite:** 31 automated tests passing with **30.67%** full codebase line coverage (645 / 2,103 lines hit measured across the entire application via `flutter test --coverage`).
 
 ### Test Suite Structure
 | Test Suite | File | Tests | Focus Area |
@@ -275,6 +275,7 @@ This repository enforces automated quality gates via GitHub Actions on every com
 | **Custom Button** | `test/widget/custom_button_test.dart` | 4 | Label rendering, tap callback, loading spinner, and icon |
 | **Custom Text Field** | `test/widget/custom_text_field_test.dart` | 4 | Text entry, label/hint, password eye toggle, and prefix icon |
 | **Post Card** | `test/widget/post_card_test.dart` | 2 | Layout rendering, author badge, metrics, and route navigation |
+| **Splash & Bootstrap** | `test/widget/splash_transition_test.dart` | 1 | Full application boot, zero white screens, Splash to Onboarding transition |
 
 To run the complete test suite locally:
 ```bash
