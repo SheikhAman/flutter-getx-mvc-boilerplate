@@ -263,9 +263,25 @@ This repository enforces automated quality gates via GitHub Actions on every com
 
 * **Code Formatting:** `dart format --output=none --set-exit-if-changed .`
 * **Static Analysis:** `flutter analyze` (Zero errors, zero warnings enforced)
-* **Test Suite:** `flutter test`
+* **Automated Test Suite:** 30 automated tests passing with **51.97%** measured line coverage (396/762 lines hit via `flutter test --coverage`).
 
-To run tests locally with coverage:
+### Test Suite Structure
+| Test Suite | File | Tests | Focus Area |
+| :--- | :--- | :---: | :--- |
+| **Core Primitives** | `test/widget_test.dart` | 5 | Validators, formatters, API constants, UserModel & PostModel serialization |
+| **Home Controller** | `test/unit/controllers/home_controller_test.dart` | 4 | Initial fetch, pull-to-refresh, error states, and pagination |
+| **Search Controller** | `test/unit/controllers/search_controller_test.dart` | 4 | Debounced 400ms search worker, state clearing, query reactivity |
+| **Auth Controller** | `test/unit/controllers/auth_controller_test.dart` | 7 | Mock login, registration, OTP validation, timer management, reset flow |
+| **Custom Button** | `test/widget/custom_button_test.dart` | 4 | Label rendering, tap callback, loading spinner, and icon |
+| **Custom Text Field** | `test/widget/custom_text_field_test.dart` | 4 | Text entry, label/hint, password eye toggle, and prefix icon |
+| **Post Card** | `test/widget/post_card_test.dart` | 2 | Layout rendering, author badge, metrics, and route navigation |
+
+To run the complete test suite locally:
+```bash
+flutter test
+```
+
+To run with coverage generation:
 ```bash
 flutter test --coverage
 ```
