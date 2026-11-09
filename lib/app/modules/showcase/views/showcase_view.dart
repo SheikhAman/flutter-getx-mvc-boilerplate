@@ -4,6 +4,7 @@ import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_sizes.dart';
 import '../../../core/values/app_strings.dart';
 import '../../../core/values/app_text_styles.dart';
+import '../../../core/widgets/custom_app_bar.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/loading_view.dart';
@@ -74,8 +75,9 @@ class ShowcaseView extends GetView<ShowcaseController> {
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppStrings.showcase.tr),
+      appBar: CustomAppBar(
+        title: AppStrings.showcase.tr,
+        showBackButton: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppSizes.p20),

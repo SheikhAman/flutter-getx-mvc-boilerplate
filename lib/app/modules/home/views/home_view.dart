@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/values/app_assets.dart';
 import '../../../core/values/app_sizes.dart';
 import '../../../core/values/app_strings.dart';
 import '../../../core/values/app_text_styles.dart';
+import '../../../core/widgets/custom_app_bar.dart';
 import '../../../core/widgets/custom_button.dart';
 import '../../../core/widgets/custom_text_field.dart';
 import '../../../core/widgets/empty_state_view.dart';
@@ -87,8 +89,27 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppStrings.appName.tr),
+      appBar: CustomAppBar(
+        showBackButton: false,
+        centerTitle: false,
+        titleWidget: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Image.asset(
+              AppAssets.logo,
+              height: 28,
+              width: 28,
+            ),
+            const SizedBox(width: AppSizes.p10),
+            Text(
+              AppStrings.appName.tr,
+              style: AppTextStyles.h4.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).appBarTheme.foregroundColor,
+              ),
+            ),
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.add_circle_outline_rounded),

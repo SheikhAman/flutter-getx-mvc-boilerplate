@@ -53,13 +53,15 @@ class ThemeController extends GetxController {
       scaffoldBackgroundColor: AppColors.scaffoldLight,
       cardColor: AppColors.cardLight,
       dividerColor: AppColors.dividerLight,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: Colors.white,
         foregroundColor: AppColors.textPrimaryLight,
         elevation: 0,
         scrolledUnderElevation: 0.5,
         centerTitle: true,
-        titleTextStyle: AppTextStyles.h4,
+        titleTextStyle: AppTextStyles.h4.copyWith(
+          color: AppColors.textPrimaryLight,
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
@@ -122,13 +124,15 @@ class ThemeController extends GetxController {
       scaffoldBackgroundColor: AppColors.scaffoldDark,
       cardColor: AppColors.cardDark,
       dividerColor: AppColors.dividerDark,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: AppColors.surfaceDark,
         foregroundColor: AppColors.textPrimaryDark,
         elevation: 0,
         scrolledUnderElevation: 0.5,
         centerTitle: true,
-        titleTextStyle: AppTextStyles.h4,
+        titleTextStyle: AppTextStyles.h4.copyWith(
+          color: AppColors.textPrimaryDark,
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
