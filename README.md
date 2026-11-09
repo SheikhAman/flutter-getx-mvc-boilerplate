@@ -12,7 +12,7 @@
 
 *A clean, scalable enterprise template featuring centralized network handling, reactive state management, dynamic theming, and modular slicing.*
 
-[Features](#-features) · [Architecture](#-architecture-overview) · [Project Structure](#-project-structure) · [Quick Start](#-quick-start) · [Auth & Demo OTP](#-auth--demo-otp) · [Adding a Module](#-how-to-add-a-new-module) · [Testing](#-testing--quality-gates) · [Contributing](#-contributing) · [License](#-license)
+[Features](#-features) · [Live Demos](#-live-app-demos) · [Architecture](#-architecture-overview) · [Project Structure](#-project-structure) · [Quick Start](#-quick-start) · [Auth & Demo OTP](#-auth--demo-otp) · [Adding a Module](#-how-to-add-a-new-module) · [Testing](#-testing--quality-gates) · [Contributing](#-contributing) · [License](#-license)
 
 </div>
 
@@ -20,6 +20,19 @@
 
 > [!NOTE]
 > **Architecture Clarification**: This project is built strictly following the **Modular GetX (MVC+S: Model-View-Controller-Service)** architecture pattern popularized by the Flutter GetX ecosystem. It is **NOT** an Uncle Bob Clean Architecture codebase (it contains no abstract domain entities, use-cases, or repository inversion interfaces). It emphasizes rapid, robust development with high cohesion, reactive controllers, and minimal boilerplate.
+
+---
+
+## 📱 Live App Demos
+
+<div align="center">
+
+| ⚡ Reactive Post Creation & Feed Ingestion | 📜 Infinite Scroll & Pagination |
+| :---: | :---: |
+| <picture><source srcset="screenshots/create_post_flow.webp" type="image/webp"><img src="screenshots/create_post_flow.gif" width="300" alt="Create Post Flow" /></picture> | <picture><source srcset="screenshots/feed_pagination_flow.webp" type="image/webp"><img src="screenshots/feed_pagination_flow.gif" width="300" alt="Feed Pagination Flow" /></picture> |
+| **Reactive Modal &bull; Double-Submit Guard**<br><sub>Tap <code>+</code> &rarr; modal form &rarr; loader &rarr; auto-close sheet &rarr; instant feed update</sub> | **REST Feed &bull; Shimmer &bull; Infinite Scroll**<br><sub>Splash transition &rarr; shimmer loading &rarr; page-by-page infinite scrolling</sub> |
+
+</div>
 
 ---
 
