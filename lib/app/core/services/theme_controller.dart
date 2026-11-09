@@ -58,7 +58,7 @@ class ThemeController extends GetxController {
         foregroundColor: AppColors.textPrimaryLight,
         elevation: 0,
         scrolledUnderElevation: 0.5,
-        centerTitle: true,
+        centerTitle: false,
         titleTextStyle: AppTextStyles.h4.copyWith(
           color: AppColors.textPrimaryLight,
         ),
@@ -129,7 +129,7 @@ class ThemeController extends GetxController {
         foregroundColor: AppColors.textPrimaryDark,
         elevation: 0,
         scrolledUnderElevation: 0.5,
-        centerTitle: true,
+        centerTitle: false,
         titleTextStyle: AppTextStyles.h4.copyWith(
           color: AppColors.textPrimaryDark,
         ),
