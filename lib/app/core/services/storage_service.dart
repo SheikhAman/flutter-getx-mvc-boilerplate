@@ -16,6 +16,7 @@ class StorageService extends GetxService {
   static const String keyRememberMe = 'remember_me';
   static const String keyPrimaryColorIndex = 'primary_color_index';
   static const String keyAvatarPath = 'avatar_path';
+  static const String keyCustomPosts = 'custom_posts';
 
   static Future<StorageService> init() async {
     await GetStorage.init();
@@ -120,5 +121,22 @@ class StorageService extends GetxService {
     } else {
       await write(keyAvatarPath, path);
     }
+  }
+
+  List<Map<String, dynamic>> get customPosts {
+    final raw = read<dynamic>(keyCustomPosts);
+    if (raw is List) {
+      return raw
+          .whereType<Map>()
+          .map((e) => Map<String, dynamic>.from(e))
+          .toList();
+    }
+    return [];
+  }
+
+  Future<void> saveCustomPost(Map<String, dynamic> postJson) async {
+    final current = customPosts;
+    current.insert(0, postJson);
+    await write(keyCustomPosts, current);
   }
 }

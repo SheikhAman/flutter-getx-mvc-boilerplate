@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/services/storage_service.dart';
 import '../../../core/utils/app_snackbar.dart';
 import '../../../data/models/post_model.dart';
 import '../providers/home_provider.dart';
@@ -57,10 +58,22 @@ class HomeController extends GetxController {
         limit: pageLimit,
       );
 
+      final List<PostModel> customList = [];
+      if (Get.isRegistered<StorageService>()) {
+        final customJson = StorageService.to.customPosts;
+        for (final json in customJson) {
+          customList.add(PostModel.fromJson(json));
+        }
+      }
+
       if (isRefresh) {
-        posts.assignAll(result);
+        posts.assignAll([...customList, ...result]);
       } else {
-        posts.addAll(result);
+        if (currentPage.value == 1 && posts.isEmpty) {
+          posts.assignAll([...customList, ...result]);
+        } else {
+          posts.addAll(result);
+        }
       }
 
       if (result.length < pageLimit) {
@@ -115,6 +128,9 @@ class HomeController extends GetxController {
         body: body.trim(),
       );
       posts.insert(0, newPost);
+      if (Get.isRegistered<StorageService>()) {
+        await StorageService.to.saveCustomPost(newPost.toJson());
+      }
       AppSnackbar.dismissLoading();
       Get.back();
       AppSnackbar.showSuccess('Post created successfully!');

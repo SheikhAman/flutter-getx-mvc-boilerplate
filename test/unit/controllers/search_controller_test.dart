@@ -1,8 +1,32 @@
+import 'package:flutter/services.dart';
+import 'package:flutter_core/app/core/services/storage_service.dart';
 import 'package:flutter_core/app/data/models/post_model.dart';
+import 'package:flutter_core/app/modules/home/controllers/home_controller.dart';
+import 'package:flutter_core/app/modules/home/providers/home_provider.dart';
 import 'package:flutter_core/app/modules/search/controllers/search_controller.dart';
 import 'package:flutter_core/app/modules/search/providers/search_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
+
+class FakeStorageService extends StorageService {
+  final Map<String, dynamic> _memory = {};
+
+  @override
+  T? read<T>(String key, {T? defaultValue}) =>
+      (_memory[key] as T?) ?? defaultValue;
+
+  @override
+  Future<void> write(String key, dynamic value) async => _memory[key] = value;
+
+  @override
+  Future<void> remove(String key) async => _memory.remove(key);
+
+  @override
+  bool hasData(String key) => _memory.containsKey(key);
+
+  @override
+  Future<void> clearAll() async => _memory.clear();
+}
 
 class MockSearchProvider extends SearchProvider {
   final List<PostModel> posts;
@@ -23,6 +47,11 @@ class MockSearchProvider extends SearchProvider {
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  const MethodChannel channel =
+      MethodChannel('plugins.flutter.io/path_provider');
+  TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+      .setMockMethodCallHandler(channel, (MethodCall methodCall) async => '.');
 
   group('AppSearchController Tests', () {
     tearDown(() {
@@ -105,6 +134,50 @@ void main() {
       expect(controller.searchResults, isEmpty);
 
       controller.onClose();
+    });
+
+    test('SearchProvider finds locally created custom post from StorageService',
+        () async {
+      final fakeStorage = FakeStorageService();
+      Get.put<StorageService>(fakeStorage);
+
+      // Save user-created post "Aman"
+      await fakeStorage.saveCustomPost({
+        'id': 101,
+        'userId': 1,
+        'title': 'Aman',
+        'body': 'adnan',
+        'likesCount': 7,
+      });
+
+      final provider = SearchProvider();
+      final results = await provider.searchPosts('aman');
+
+      expect(results, isNotEmpty);
+      expect(results.first.title, 'Aman');
+      expect(results.first.body, 'adnan');
+    });
+
+    test('SearchProvider finds newly created post directly from HomeController',
+        () async {
+      final homeController = HomeController(homeProvider: HomeProvider());
+      Get.put<HomeController>(homeController);
+
+      homeController.posts.insert(
+        0,
+        const PostModel(
+          id: 102,
+          userId: 1,
+          title: 'Aman Test Post',
+          body: 'adnan special content',
+        ),
+      );
+
+      final provider = SearchProvider();
+      final results = await provider.searchPosts('adnan');
+
+      expect(results, isNotEmpty);
+      expect(results.first.title, 'Aman Test Post');
     });
   });
 }
