@@ -69,14 +69,12 @@ class AuthController extends GetxController {
 
     try {
       isLoading.value = true;
-      AppSnackbar.showLoading();
 
       final user = await provider.login(email: email, password: password);
       pendingUser.value = user;
       pendingEmail.value = email;
 
       await StorageService.to.setRememberMe(rememberMe.value);
-      AppSnackbar.dismissLoading();
       AppSnackbar.showInfo(AppStrings.demoOtpHint.tr);
 
       startResendTimer();
@@ -85,7 +83,6 @@ class AuthController extends GetxController {
         arguments: {'email': email, 'user': user},
       );
     } catch (e) {
-      AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
     } finally {
       isLoading.value = false;
@@ -100,7 +97,6 @@ class AuthController extends GetxController {
 
     try {
       isLoading.value = true;
-      AppSnackbar.showLoading();
 
       final user = await provider.register(
         name: name,
@@ -113,7 +109,6 @@ class AuthController extends GetxController {
       pendingEmail.value = email;
       pendingPhone.value = phone;
 
-      AppSnackbar.dismissLoading();
       AppSnackbar.showInfo(AppStrings.demoOtpHint.tr);
 
       startResendTimer();
@@ -122,7 +117,6 @@ class AuthController extends GetxController {
         arguments: {'email': email, 'phone': phone, 'user': user},
       );
     } catch (e) {
-      AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
     } finally {
       isLoading.value = false;
@@ -132,14 +126,11 @@ class AuthController extends GetxController {
   Future<bool> verifyOtp(String code) async {
     try {
       isOtpVerifying.value = true;
-      AppSnackbar.showLoading();
 
       final isValid = await provider.verifyOtp(
         code: code,
         email: pendingEmail.value,
       );
-
-      AppSnackbar.dismissLoading();
 
       if (!isValid) {
         AppSnackbar.showError(
@@ -167,7 +158,6 @@ class AuthController extends GetxController {
       Get.offAllNamed(AppRoutes.dashboard);
       return true;
     } catch (e) {
-      AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
       return false;
     } finally {
@@ -185,14 +175,11 @@ class AuthController extends GetxController {
     final email = forgotPasswordEmailController.text.trim();
     try {
       isLoading.value = true;
-      AppSnackbar.showLoading();
 
       await provider.sendPasswordReset(email: email);
-      AppSnackbar.dismissLoading();
       AppSnackbar.showSuccess('Reset instructions sent to $email');
       Get.back();
     } catch (e) {
-      AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
     } finally {
       isLoading.value = false;

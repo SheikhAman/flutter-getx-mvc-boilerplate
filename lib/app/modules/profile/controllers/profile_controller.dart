@@ -155,7 +155,6 @@ class ProfileController extends GetxController {
 
     try {
       isUpdating.value = true;
-      AppSnackbar.showLoading();
 
       final updated = await provider.updateProfile(
         id: user.id,
@@ -167,11 +166,9 @@ class ProfileController extends GetxController {
         user.copyWith(name: updated.name, phone: updated.phone),
       );
 
-      AppSnackbar.dismissLoading();
       Get.back();
       AppSnackbar.showSuccess('Profile updated successfully');
     } catch (e) {
-      AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
     } finally {
       isUpdating.value = false;

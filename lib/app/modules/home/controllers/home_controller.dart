@@ -122,7 +122,6 @@ class HomeController extends GetxController {
 
     try {
       isSubmitting.value = true;
-      AppSnackbar.showLoading();
       final newPost = await provider.createPost(
         title: trimmedTitle,
         body: body.trim(),
@@ -131,12 +130,10 @@ class HomeController extends GetxController {
       if (Get.isRegistered<StorageService>()) {
         await StorageService.to.saveCustomPost(newPost.toJson());
       }
-      AppSnackbar.dismissLoading();
       Get.back();
       AppSnackbar.showSuccess('Post created successfully!');
       return true;
     } catch (e) {
-      AppSnackbar.dismissLoading();
       AppSnackbar.showError(e.toString());
       return false;
     } finally {
