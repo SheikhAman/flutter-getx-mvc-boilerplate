@@ -126,7 +126,6 @@ class ProfileController extends GetxController {
           await StorageService.to.setAvatarPath(image.path);
         }
         await authService.updateUser(user.copyWith(avatar: image.path));
-        AppSnackbar.showSuccess('Avatar updated successfully');
       }
     } catch (e) {
       AppSnackbar.showError(
