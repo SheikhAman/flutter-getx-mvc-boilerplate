@@ -1,5 +1,6 @@
 import 'dart:developer' as developer;
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart' as getx;
 import '../services/auth_service.dart';
 import '../services/storage_service.dart';
@@ -20,18 +21,45 @@ class ApiInterceptor extends Interceptor {
       options.headers['Content-Type'] = 'application/json';
     }
 
-    developer.log(
-      '--> ${options.method.toUpperCase()} ${options.baseUrl}${options.path}',
-      name: 'DioClient',
-    );
-    if (options.queryParameters.isNotEmpty) {
-      developer.log('Query: ${options.queryParameters}', name: 'DioClient');
-    }
-    if (options.data != null) {
-      developer.log('Data: ${options.data}', name: 'DioClient');
+    if (kDebugMode) {
+      developer.log(
+        '--> ${options.method.toUpperCase()} ${options.baseUrl}${options.path}',
+        name: 'DioClient',
+      );
+      if (options.queryParameters.isNotEmpty) {
+        developer.log('Query: ${options.queryParameters}', name: 'DioClient');
+      }
+      if (options.data != null) {
+        final sanitizedData = _sanitizePayload(options.data);
+        developer.log('Data: $sanitizedData', name: 'DioClient');
+      }
     }
 
     handler.next(options);
+  }
+
+  dynamic _sanitizePayload(dynamic data) {
+    if (data is Map) {
+      final sanitized = Map<dynamic, dynamic>.from(data);
+      const sensitiveKeys = {
+        'password',
+        'token',
+        'access_token',
+        'refresh_token',
+        'secret',
+        'otp',
+        'pin',
+      };
+      for (final key in sanitized.keys) {
+        if (sensitiveKeys.contains(key.toString().toLowerCase())) {
+          sanitized[key] = '***REDACTED***';
+        } else if (sanitized[key] is Map) {
+          sanitized[key] = _sanitizePayload(sanitized[key]);
+        }
+      }
+      return sanitized;
+    }
+    return data;
   }
 
   @override

@@ -1,8 +1,8 @@
-import 'package:flutter_core/app/core/network/api_constants.dart';
-import 'package:flutter_core/app/core/utils/formatters.dart';
-import 'package:flutter_core/app/core/utils/validators.dart';
-import 'package:flutter_core/app/data/models/post_model.dart';
-import 'package:flutter_core/app/data/models/user_model.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/network/api_constants.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/utils/formatters.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/utils/validators.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/data/models/post_model.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/data/models/user_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -32,8 +32,11 @@ class DioClient {
   Dio get rawDio => _dio;
 
   // Generic request runner with automatic error translation
-  Future<T> _run<T>(Future<Response<T>> Function() request,
-      {int maxRetries = 1}) async {
+  Future<T> _run<T>(
+    Future<Response<T>> Function() request, {
+    int maxRetries = 1,
+    bool isIdempotent = true,
+  }) async {
     int attempts = 0;
     while (true) {
       try {
@@ -41,7 +44,9 @@ class DioClient {
         final response = await request();
         return response.data as T;
       } on DioException catch (e) {
-        if (attempts <= maxRetries && _shouldRetry(e)) {
+        // Only retry idempotent operations (GET/PUT/DELETE) on transient connection errors.
+        // Non-idempotent operations like POST are never automatically retried to avoid duplicate server writes.
+        if (isIdempotent && attempts <= maxRetries && _shouldRetry(e)) {
           await Future.delayed(Duration(milliseconds: 500 * attempts));
           continue;
         }
@@ -66,15 +71,18 @@ class DioClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    return _run(() => _dio.get(
-          path,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-        ));
+    return _run(
+      () => _dio.get(
+        path,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      ),
+      isIdempotent: true,
+    );
   }
 
-  // POST
+  // POST (non-idempotent: disabled auto-retry to prevent accidental duplicate writes)
   Future<dynamic> post(
     String path, {
     dynamic data,
@@ -82,13 +90,16 @@ class DioClient {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    return _run(() => _dio.post(
-          path,
-          data: data,
-          queryParameters: queryParameters,
-          options: options,
-          cancelToken: cancelToken,
-        ));
+    return _run(
+      () => _dio.post(
+        path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+      ),
+      isIdempotent: false,
+    );
   }
 
   // PUT

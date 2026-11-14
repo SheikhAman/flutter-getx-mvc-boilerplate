@@ -3,6 +3,10 @@ import '../../../core/network/dio_client.dart';
 import '../../../data/models/user_model.dart';
 
 class AuthProvider {
+  // DioClient is wired here for architectural completeness so developers
+  // can directly connect real backend endpoints (e.g. _dioClient.post(ApiConstants.login, ...))
+  // without changing constructor signatures or dependency injection in AuthBinding.
+  // The demo methods below simulate network latency and return mock UserModel data.
   final DioClient _dioClient;
 
   AuthProvider({DioClient? dioClient}) : _dioClient = dioClient ?? DioClient();

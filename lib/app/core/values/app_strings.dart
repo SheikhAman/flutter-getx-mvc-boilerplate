@@ -112,7 +112,7 @@ class AppStrings extends Translations {
       };
 
   static const Map<String, String> _en = {
-    appName: 'Flutter Core',
+    appName: 'Flutter GetX MVC Boilerplate',
     welcome: 'Welcome Back',
     welcomeSubtitle: 'Sign in to continue exploring your account',
     login: 'Sign In',
@@ -205,7 +205,7 @@ class AppStrings extends Translations {
   };
 
   static const Map<String, String> _bn = {
-    appName: 'ফ্লাটার কোর',
+    appName: 'গেটএক্স বয়লারপ্লেট',
     welcome: 'স্বাগতম',
     welcomeSubtitle: 'আপনার অ্যাকাউন্টে প্রবেশ করতে সাইন ইন করুন',
     login: 'সাইন ইন',

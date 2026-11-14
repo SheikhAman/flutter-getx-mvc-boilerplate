@@ -36,7 +36,7 @@ class RegisterView extends GetView<AuthController> {
                 ),
                 const SizedBox(height: AppSizes.p8),
                 Text(
-                  'Join flutter_core boilerplate community',
+                  'Join the boilerplate community',
                   style: AppTextStyles.bodyMedium.copyWith(
                     color: theme.textTheme.bodyMedium?.color?.withAlpha(160),
                   ),

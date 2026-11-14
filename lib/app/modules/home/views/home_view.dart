@@ -16,72 +16,8 @@ class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
   void _showCreatePostSheet(BuildContext context) {
-    final titleController = TextEditingController();
-    final bodyController = TextEditingController();
-
     Get.bottomSheet(
-      Container(
-        padding: const EdgeInsets.all(AppSizes.p24),
-        decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: const BorderRadius.vertical(
-            top: Radius.circular(AppSizes.radiusXl),
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: AppSizes.p20),
-                  decoration: BoxDecoration(
-                    color: Colors.grey.withAlpha(100),
-                    borderRadius: AppSizes.borderRadiusFull,
-                  ),
-                ),
-              ),
-              Text(
-                AppStrings.createPost.tr,
-                style: AppTextStyles.h3,
-              ),
-              const SizedBox(height: AppSizes.p20),
-              CustomTextField(
-                controller: titleController,
-                label: AppStrings.postTitle.tr,
-                hint: 'Enter title...',
-              ),
-              const SizedBox(height: AppSizes.p16),
-              CustomTextField(
-                controller: bodyController,
-                label: AppStrings.postBody.tr,
-                hint: 'Enter content...',
-                maxLines: 4,
-              ),
-              const SizedBox(height: AppSizes.p24),
-              Obx(
-                () => CustomButton(
-                  text: AppStrings.submit.tr,
-                  isLoading: controller.isSubmitting.value,
-                  onPressed: controller.isSubmitting.value
-                      ? null
-                      : () {
-                          if (titleController.text.trim().isEmpty) return;
-                          controller.createPost(
-                            titleController.text.trim(),
-                            bodyController.text.trim(),
-                          );
-                        },
-                ),
-              ),
-              const SizedBox(height: AppSizes.p12),
-            ],
-          ),
-        ),
-      ),
+      _CreatePostSheet(controller: controller),
       isScrollControlled: true,
     );
   }
@@ -170,6 +106,100 @@ class HomeView extends GetView<HomeController> {
           ),
         );
       }),
+    );
+  }
+}
+
+class _CreatePostSheet extends StatefulWidget {
+  final HomeController controller;
+
+  const _CreatePostSheet({required this.controller});
+
+  @override
+  State<_CreatePostSheet> createState() => _CreatePostSheetState();
+}
+
+class _CreatePostSheetState extends State<_CreatePostSheet> {
+  late final TextEditingController _titleController;
+  late final TextEditingController _bodyController;
+
+  @override
+  void initState() {
+    super.initState();
+    _titleController = TextEditingController();
+    _bodyController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _bodyController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(AppSizes.p24),
+      decoration: BoxDecoration(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(AppSizes.radiusXl),
+        ),
+      ),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Center(
+              child: Container(
+                width: 40,
+                height: 4,
+                margin: const EdgeInsets.only(bottom: AppSizes.p20),
+                decoration: BoxDecoration(
+                  color: Colors.grey.withAlpha(100),
+                  borderRadius: AppSizes.borderRadiusFull,
+                ),
+              ),
+            ),
+            Text(
+              AppStrings.createPost.tr,
+              style: AppTextStyles.h3,
+            ),
+            const SizedBox(height: AppSizes.p20),
+            CustomTextField(
+              controller: _titleController,
+              label: AppStrings.postTitle.tr,
+              hint: 'Enter title...',
+            ),
+            const SizedBox(height: AppSizes.p16),
+            CustomTextField(
+              controller: _bodyController,
+              label: AppStrings.postBody.tr,
+              hint: 'Enter content...',
+              maxLines: 4,
+            ),
+            const SizedBox(height: AppSizes.p24),
+            Obx(
+              () => CustomButton(
+                text: AppStrings.submit.tr,
+                isLoading: widget.controller.isSubmitting.value,
+                onPressed: widget.controller.isSubmitting.value
+                    ? null
+                    : () {
+                        if (_titleController.text.trim().isEmpty) return;
+                        widget.controller.createPost(
+                          _titleController.text.trim(),
+                          _bodyController.text.trim(),
+                        );
+                      },
+              ),
+            ),
+            const SizedBox(height: AppSizes.p12),
+          ],
+        ),
+      ),
     );
   }
 }

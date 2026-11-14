@@ -1,4 +1,4 @@
-name: flutter_core
+name: flutter_getx_mvc_boilerplate
 description: Production-ready Flutter boilerplate using Modular GetX (MVC+S) — scalable architecture, reusable widgets, responsive UI, and modern development practices.
 publish_to: none
 
@@ -19,13 +19,10 @@ dependencies:
   flutter_screenutil: ^5.9.3
   get_storage: ^2.1.1
   connectivity_plus: ^7.1.1
-  geolocator: ^14.0.2
-  device_info_plus: ^11.3.3
   shimmer: ^3.0.0
   flutter_easyloading: ^3.0.5
   webview_flutter: ^4.13.0
   intl: ^0.20.2
-  path_provider: ^2.1.5
   pin_code_fields: ^8.0.1
   image_picker: ^1.1.2
 

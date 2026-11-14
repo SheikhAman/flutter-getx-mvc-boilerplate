@@ -42,6 +42,9 @@ class HomeController extends GetxController {
   }
 
   Future<void> fetchPosts({bool isRefresh = false}) async {
+    // In-flight guard: prevent duplicate parallel calls from duplicating page items
+    if (isLoading.value && !isRefresh) return;
+
     if (isRefresh) {
       currentPage.value = 1;
       hasMore.value = true;
@@ -130,7 +133,9 @@ class HomeController extends GetxController {
       if (Get.isRegistered<StorageService>()) {
         await StorageService.to.saveCustomPost(newPost.toJson());
       }
-      Get.back();
+      if (Get.isBottomSheetOpen == true) {
+        Get.back();
+      }
       AppSnackbar.showSuccess('Post created successfully!');
       return true;
     } catch (e) {

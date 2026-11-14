@@ -1,11 +1,11 @@
 {
-    "name": "flutter_core",
-    "short_name": "flutter_core",
+    "name": "Flutter GetX MVC Boilerplate",
+    "short_name": "GetX Boilerplate",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Production-ready Flutter boilerplate using Modular GetX (MVC+S).",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

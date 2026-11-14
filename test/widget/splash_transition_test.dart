@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_core/app/core/services/auth_service.dart';
-import 'package:flutter_core/app/core/services/locale_service.dart';
-import 'package:flutter_core/app/core/services/storage_service.dart';
-import 'package:flutter_core/app/core/services/theme_controller.dart';
-import 'package:flutter_core/app/modules/onboarding/views/onboarding_view.dart';
-import 'package:flutter_core/app/modules/splash/views/splash_view.dart';
-import 'package:flutter_core/main.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/services/auth_service.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/services/locale_service.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/services/storage_service.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/services/theme_controller.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/onboarding/views/onboarding_view.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/splash/views/splash_view.dart';
+import 'package:flutter_getx_mvc_boilerplate/main.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 
@@ -50,11 +50,11 @@ void main() {
   testWidgets(
       'App boots on SplashView and navigates to Onboarding with zero white screens',
       (WidgetTester tester) async {
-    await tester.pumpWidget(const FlutterCoreApp());
+    await tester.pumpWidget(const BoilerplateApp());
 
     // Verify initial render is SplashView with app name and logo
     expect(find.byType(SplashView), findsOneWidget);
-    expect(find.text('Flutter Core'), findsOneWidget);
+    expect(find.text('Flutter GetX MVC Boilerplate'), findsOneWidget);
 
     // Advance 2-second timer on splash
     await tester.pump(const Duration(seconds: 2));

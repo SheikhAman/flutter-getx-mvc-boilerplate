@@ -1,5 +1,5 @@
 // ===========================================================================
-// Project: flutter_core (Enterprise Modular GetX MVC+S Master Boilerplate)
+// Project: flutter_getx_mvc_boilerplate (Modular GetX MVC+S Master Boilerplate)
 // Environment:
 //   - Flutter Version: 3.41.9 (Channel: stable)
 //   - Dart SDK: 3.11.5
@@ -20,6 +20,7 @@ import 'app/core/services/auth_service.dart';
 import 'app/core/services/locale_service.dart';
 import 'app/core/services/storage_service.dart';
 import 'app/core/services/theme_controller.dart';
+import 'app/core/values/app_colors.dart';
 import 'app/core/values/app_strings.dart';
 
 Future<void> main() async {
@@ -28,15 +29,6 @@ Future<void> main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ),
-  );
 
   // Initialize permanent services
   await StorageService.init();
@@ -48,7 +40,7 @@ Future<void> main() async {
 
   _configEasyLoading();
 
-  runApp(const FlutterCoreApp());
+  runApp(const BoilerplateApp());
 }
 
 void _configEasyLoading() {
@@ -61,8 +53,8 @@ void _configEasyLoading() {
     ..userInteractions = false;
 }
 
-class FlutterCoreApp extends StatelessWidget {
-  const FlutterCoreApp({super.key});
+class BoilerplateApp extends StatelessWidget {
+  const BoilerplateApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,29 +67,47 @@ class FlutterCoreApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return Obx(
-          () => GetMaterialApp(
-            title: 'Flutter Core',
-            debugShowCheckedModeBanner: false,
-            translations: AppStrings(),
-            locale: localeService.currentLocale.value,
-            fallbackLocale: LocaleService.englishLocale,
-            defaultTransition: Transition.cupertino,
-            transitionDuration: const Duration(milliseconds: 300),
-            theme: themeController.lightTheme,
-            darkTheme: themeController.darkTheme,
-            themeMode: themeController.themeMode,
-            initialRoute: AppRoutes.initial,
-            getPages: AppPages.routes,
-            unknownRoute: AppPages.unknownRoute,
-            builder: EasyLoading.init(
-              builder: (context, widget) {
-                return GestureDetector(
-                  onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-                  child: widget ?? const SizedBox(),
-                );
-              },
-            ),
-          ),
+          () {
+            final isDark = themeController.isDarkMode.value;
+            final overlayStyle = SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness:
+                  isDark ? Brightness.light : Brightness.dark,
+              systemNavigationBarColor:
+                  isDark ? AppColors.scaffoldDark : Colors.white,
+              systemNavigationBarIconBrightness:
+                  isDark ? Brightness.light : Brightness.dark,
+            );
+            SystemChrome.setSystemUIOverlayStyle(overlayStyle);
+
+            return AnnotatedRegion<SystemUiOverlayStyle>(
+              value: overlayStyle,
+              child: GetMaterialApp(
+                title: 'Flutter GetX MVC Boilerplate',
+                debugShowCheckedModeBanner: false,
+                translations: AppStrings(),
+                locale: localeService.currentLocale.value,
+                fallbackLocale: LocaleService.englishLocale,
+                defaultTransition: Transition.cupertino,
+                transitionDuration: const Duration(milliseconds: 300),
+                theme: themeController.lightTheme,
+                darkTheme: themeController.darkTheme,
+                themeMode: themeController.themeMode,
+                initialRoute: AppRoutes.initial,
+                getPages: AppPages.routes,
+                unknownRoute: AppPages.unknownRoute,
+                builder: EasyLoading.init(
+                  builder: (context, widget) {
+                    return GestureDetector(
+                      onTap: () =>
+                          FocusManager.instance.primaryFocus?.unfocus(),
+                      child: widget ?? const SizedBox(),
+                    );
+                  },
+                ),
+              ),
+            );
+          },
         );
       },
     );

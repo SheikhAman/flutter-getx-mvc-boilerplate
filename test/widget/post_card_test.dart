@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core/app/core/routes/app_routes.dart';
-import 'package:flutter_core/app/data/models/post_model.dart';
-import 'package:flutter_core/app/modules/home/widgets/post_card.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/routes/app_routes.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/data/models/post_model.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/widgets/post_card.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 

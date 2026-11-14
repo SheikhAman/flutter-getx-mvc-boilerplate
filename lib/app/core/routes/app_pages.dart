@@ -27,6 +27,8 @@ import '../../modules/showcase/views/showcase_view.dart';
 import '../../modules/splash/bindings/splash_binding.dart';
 import '../../modules/splash/views/splash_view.dart';
 import 'app_routes.dart';
+import 'middlewares/auth_guard.dart';
+import 'middlewares/onboarding_guard.dart';
 
 class AppPages {
   AppPages._();
@@ -47,12 +49,6 @@ class AppPages {
       transition: Transition.fadeIn,
     ),
     GetPage(
-      name: AppRoutes.splash,
-      page: () => const SplashView(),
-      binding: SplashBinding(),
-      transition: Transition.fadeIn,
-    ),
-    GetPage(
       name: AppRoutes.onboarding,
       page: () => const OnboardingView(),
       binding: OnboardingBinding(),
@@ -64,12 +60,14 @@ class AppPages {
       name: AppRoutes.login,
       page: () => LoginView(),
       binding: AuthBinding(),
+      middlewares: [OnboardingGuard()],
       transition: Transition.rightToLeft,
     ),
     GetPage(
       name: AppRoutes.register,
       page: () => RegisterView(),
       binding: AuthBinding(),
+      middlewares: [OnboardingGuard()],
       transition: Transition.rightToLeft,
     ),
     GetPage(
@@ -90,6 +88,7 @@ class AppPages {
       name: AppRoutes.dashboard,
       page: () => const DashboardView(),
       binding: DashboardBinding(),
+      middlewares: [OnboardingGuard(), AuthGuard()],
       transition: Transition.fadeIn,
     ),
     GetPage(
@@ -120,6 +119,7 @@ class AppPages {
       name: AppRoutes.settings,
       page: () => const SettingsView(),
       binding: SettingsBinding(),
+      middlewares: [AuthGuard()],
       transition: Transition.cupertino,
     ),
     GetPage(

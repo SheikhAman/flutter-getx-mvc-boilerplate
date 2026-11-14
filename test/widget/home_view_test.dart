@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core/app/core/values/app_strings.dart';
-import 'package:flutter_core/app/core/widgets/custom_button.dart';
-import 'package:flutter_core/app/data/models/post_model.dart';
-import 'package:flutter_core/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter_core/app/modules/home/providers/home_provider.dart';
-import 'package:flutter_core/app/modules/home/views/home_view.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/values/app_strings.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/widgets/custom_button.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/data/models/post_model.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/controllers/home_controller.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/providers/home_provider.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/views/home_view.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';

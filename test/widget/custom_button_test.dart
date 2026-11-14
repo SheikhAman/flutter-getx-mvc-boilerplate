@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_core/app/core/widgets/custom_button.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/widgets/custom_button.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

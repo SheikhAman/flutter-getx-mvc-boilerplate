@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_core/app/data/models/post_model.dart';
-import 'package:flutter_core/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter_core/app/modules/home/providers/home_provider.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/data/models/post_model.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/controllers/home_controller.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/providers/home_provider.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
@@ -195,6 +195,24 @@ void main() {
       // Only one new post should have been inserted
       expect(controller.posts.length, 3);
       expect(controller.posts.first.title, 'First Post');
+
+      await tester.pump(const Duration(seconds: 4));
+    });
+
+    testWidgets('createPost does not pop route if bottom sheet is not open',
+        (tester) async {
+      await tester.pumpWidget(buildTestHost(child: const Text('Root Route')));
+      expect(Get.isBottomSheetOpen, isFalse);
+
+      final initialPosts = generatePosts(2);
+      final mockProvider = MockHomeProvider(postsToReturn: initialPosts);
+      final controller = HomeController(homeProvider: mockProvider);
+      await controller.fetchPosts();
+
+      final success = await controller.createPost('Safe Post', 'Body');
+      expect(success, isTrue);
+      // Verify root route is still active and was NOT popped
+      expect(find.text('Root Route'), findsOneWidget);
 
       await tester.pump(const Duration(seconds: 4));
     });

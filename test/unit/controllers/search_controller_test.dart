@@ -1,10 +1,10 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_core/app/core/services/storage_service.dart';
-import 'package:flutter_core/app/data/models/post_model.dart';
-import 'package:flutter_core/app/modules/home/controllers/home_controller.dart';
-import 'package:flutter_core/app/modules/home/providers/home_provider.dart';
-import 'package:flutter_core/app/modules/search/controllers/search_controller.dart';
-import 'package:flutter_core/app/modules/search/providers/search_provider.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/core/services/storage_service.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/data/models/post_model.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/controllers/home_controller.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/home/providers/home_provider.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/search/controllers/search_controller.dart';
+import 'package:flutter_getx_mvc_boilerplate/app/modules/search/providers/search_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 
