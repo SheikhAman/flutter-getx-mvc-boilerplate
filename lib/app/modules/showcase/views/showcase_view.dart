@@ -15,14 +15,133 @@ class ShowcaseView extends GetView<ShowcaseController> {
   const ShowcaseView({super.key});
 
   void _showDemoDialog(BuildContext context) {
-    Get.defaultDialog(
-      title: 'Boilerplate Dialog',
-      middleText:
-          'This is a standardized GetX dialog styled for enterprise apps.',
-      textConfirm: 'Confirm',
-      textCancel: 'Cancel',
-      confirmTextColor: Colors.white,
-      onConfirm: () => Get.back(),
+    final theme = Theme.of(context);
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusLg),
+        ),
+        backgroundColor: theme.colorScheme.surface,
+        insetPadding: const EdgeInsets.symmetric(horizontal: AppSizes.p28),
+        child: Padding(
+          padding: const EdgeInsets.all(AppSizes.p24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                'Boilerplate Dialog',
+                style: AppTextStyles.h3.copyWith(
+                  color: theme.colorScheme.onSurface,
+                ),
+              ),
+              const SizedBox(height: AppSizes.p12),
+              Text(
+                'This is a standardized Material 3 dialog styled to match your active theme, color seed, and typography.',
+                style: AppTextStyles.bodyMedium.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                ),
+              ),
+              const SizedBox(height: AppSizes.p24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextButton(
+                    onPressed: () => Get.back(),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSizes.p16,
+                        vertical: AppSizes.p10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+                      ),
+                    ),
+                    child: Text(
+                      'Cancel',
+                      style: AppTextStyles.button.copyWith(
+                        color: theme.colorScheme.onSurfaceVariant,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: AppSizes.p10),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(96, AppSizes.buttonHeightSm),
+                      backgroundColor: theme.colorScheme.primary,
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppSizes.p20,
+                        vertical: AppSizes.p10,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+                      ),
+                    ),
+                    onPressed: () => Get.back(),
+                    child: Text(
+                      'Confirm',
+                      style: AppTextStyles.button.copyWith(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFeedbackChip({
+    required BuildContext context,
+    required String label,
+    required IconData icon,
+    required Color color,
+    required Color lightBg,
+    required VoidCallback onPressed,
+  }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bg = isDark ? color.withAlpha(45) : lightBg;
+    final fg = isDark ? color.withAlpha(235) : color;
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        child: Ink(
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppSizes.p14,
+            vertical: AppSizes.p10,
+          ),
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+            border: Border.all(
+              color: color.withAlpha(isDark ? 80 : 50),
+              width: 1,
+            ),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 18, color: fg),
+              const SizedBox(width: AppSizes.p8),
+              Text(
+                label,
+                style: AppTextStyles.button.copyWith(
+                  color: fg,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
@@ -184,49 +303,44 @@ class ShowcaseView extends GetView<ShowcaseController> {
               spacing: AppSizes.p8,
               runSpacing: AppSizes.p8,
               children: [
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.success,
-                    foregroundColor: Colors.white,
-                  ),
-                  icon: const Icon(Icons.check_circle, size: 16),
-                  label: const Text('Success'),
+                _buildFeedbackChip(
+                  context: context,
+                  label: 'Success',
+                  icon: Icons.check_circle_outline_rounded,
+                  color: AppColors.success,
+                  lightBg: AppColors.successLight,
                   onPressed: controller.testSuccessSnackbar,
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.error,
-                    foregroundColor: Colors.white,
-                  ),
-                  icon: const Icon(Icons.error_outline, size: 16),
-                  label: const Text('Error'),
+                _buildFeedbackChip(
+                  context: context,
+                  label: 'Error',
+                  icon: Icons.error_outline_rounded,
+                  color: AppColors.error,
+                  lightBg: AppColors.errorLight,
                   onPressed: controller.testErrorSnackbar,
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.warning,
-                    foregroundColor: Colors.white,
-                  ),
-                  icon: const Icon(Icons.warning_amber_rounded, size: 16),
-                  label: const Text('Warning'),
+                _buildFeedbackChip(
+                  context: context,
+                  label: 'Warning',
+                  icon: Icons.warning_amber_rounded,
+                  color: AppColors.warning,
+                  lightBg: AppColors.warningLight,
                   onPressed: controller.testWarningSnackbar,
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.info,
-                    foregroundColor: Colors.white,
-                  ),
-                  icon: const Icon(Icons.info_outline, size: 16),
-                  label: const Text('Info'),
+                _buildFeedbackChip(
+                  context: context,
+                  label: 'Info',
+                  icon: Icons.info_outline_rounded,
+                  color: AppColors.info,
+                  lightBg: AppColors.infoLight,
                   onPressed: controller.testInfoSnackbar,
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purple,
-                    foregroundColor: Colors.white,
-                  ),
-                  icon: const Icon(Icons.hourglass_top, size: 16),
-                  label: const Text('Loading Overlay'),
+                _buildFeedbackChip(
+                  context: context,
+                  label: 'Loading Overlay',
+                  icon: Icons.hourglass_top_rounded,
+                  color: theme.colorScheme.primary,
+                  lightBg: theme.colorScheme.primary.withAlpha(25),
                   onPressed: controller.testLoadingOverlay,
                 ),
               ],

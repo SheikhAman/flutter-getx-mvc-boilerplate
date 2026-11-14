@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../values/app_colors.dart';
 import '../values/app_sizes.dart';
 import '../values/app_text_styles.dart';
 
@@ -136,7 +135,9 @@ class CustomButton extends StatelessWidget {
       case ButtonVariant.primary:
         return theme.colorScheme.primary;
       case ButtonVariant.secondary:
-        return isDark ? AppColors.grey800 : AppColors.grey200;
+        return isDark
+            ? theme.colorScheme.primary.withAlpha(50)
+            : theme.colorScheme.primary.withAlpha(28);
       case ButtonVariant.outline:
       case ButtonVariant.text:
         return Colors.transparent;
@@ -148,7 +149,7 @@ class CustomButton extends StatelessWidget {
       case ButtonVariant.primary:
         return Colors.white;
       case ButtonVariant.secondary:
-        return isDark ? Colors.white : AppColors.grey900;
+        return theme.colorScheme.primary;
       case ButtonVariant.outline:
         return theme.colorScheme.primary;
       case ButtonVariant.text:
