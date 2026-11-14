@@ -4,7 +4,10 @@ import 'package:get_storage/get_storage.dart';
 class StorageService extends GetxService {
   static StorageService get to => Get.find();
 
-  final GetStorage _box = GetStorage();
+  GetStorage? _boxInstance;
+  GetStorage get _box => _boxInstance ??= GetStorage();
+
+  StorageService({GetStorage? box}) : _boxInstance = box;
 
   static const String keyToken = 'auth_token';
   static const String keyRefreshToken = 'refresh_token';
