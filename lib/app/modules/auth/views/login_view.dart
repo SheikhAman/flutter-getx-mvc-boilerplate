@@ -141,11 +141,11 @@ class LoginView extends GetView<AuthController> {
                   ),
                   const SizedBox(height: AppSizes.p16),
 
-                  // Explore as Guest / Go to Dashboard
+                  // Explore Component Gallery
                   CustomButton.outline(
                     text: 'Explore Component Gallery',
                     icon: Icons.dashboard_customize_outlined,
-                    onPressed: () => Get.offAllNamed(AppRoutes.dashboard),
+                    onPressed: () => Get.toNamed(AppRoutes.showcase),
                   ),
                 ],
               ),

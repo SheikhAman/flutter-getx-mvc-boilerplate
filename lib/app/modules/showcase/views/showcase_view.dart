@@ -77,7 +77,7 @@ class ShowcaseView extends GetView<ShowcaseController> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.showcase.tr,
-        showBackButton: false,
+        showBackButton: Navigator.canPop(context),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(AppSizes.p20),

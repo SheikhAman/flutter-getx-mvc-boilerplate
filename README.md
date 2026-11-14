@@ -10,7 +10,7 @@ Clone it, install dependencies, and start building your product in three command
 [![Dart](https://img.shields.io/badge/Dart-3.11.5-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
 [![GetX](https://img.shields.io/badge/GetX-4.7.3-8A2BE2?style=for-the-badge)](https://pub.dev/packages/get)
 [![Architecture](https://img.shields.io/badge/Architecture-Modular%20GetX%20MVC%2BS-22C55E?style=for-the-badge)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate)
-[![Tests](https://img.shields.io/badge/Tests-43%20Passing-success?style=for-the-badge)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate)
+[![Tests](https://img.shields.io/badge/Tests-44%20Passing-success?style=for-the-badge)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 [Quick Start](#-quick-start) &bull; [Live Demos](#-live-app-demos) &bull; [Architecture](#-architecture-overview) &bull; [App Flows](#-app-flows) &bull; [How to Add a Module](#-how-to-add-a-new-module) &bull; [How to Rename](#-how-to-rename-this-for-your-own-app) &bull; [Testing](#-testing--quality-gates) &bull; [FAQ](#-troubleshooting--faq)
@@ -438,7 +438,7 @@ This repository enforces automated quality gates via GitHub Actions on every pul
 
 1. **Code Formatting:** `dart format --output=none --set-exit-if-changed .`
 2. **Static Analysis:** `flutter analyze` (Zero errors, zero warnings enforced)
-3. **Automated Test Suite:** 43 automated tests passing with **44.53%** full codebase line coverage (1,002 / 2,250 lines hit).
+3. **Automated Test Suite:** 44 automated tests passing.
 
 ### Test Suite Structure
 
@@ -447,6 +447,7 @@ This repository enforces automated quality gates via GitHub Actions on every pul
 | **Core Primitives** | `test/widget_test.dart` | 5 | Validators, formatters, API constants, UserModel & PostModel serialization |
 | **Home Controller** | `test/unit/controllers/home_controller_test.dart` | 8 | Initial fetch, pull-to-refresh, pagination, post creation, and route-pop guards |
 | **Home View & Create Post** | `test/widget/home_view_test.dart` | 2 | Bottom sheet dismiss, top-of-feed insertion, and double-submit protection |
+| **Login View & Showcase** | `test/widget/login_view_test.dart` | 1 | Direct navigation to Component Gallery without authentication redirect |
 | **Search Controller & Provider** | `test/unit/controllers/search_controller_test.dart` | 6 | Debounced 400ms search worker, local custom posts, in-memory search |
 | **Auth Controller** | `test/unit/controllers/auth_controller_test.dart` | 7 | Mock login, registration, OTP validation, countdown timer, reset flow |
 | **Custom Button** | `test/widget/custom_button_test.dart` | 4 | Text rendering, tap callback, loading spinner, and icon |
