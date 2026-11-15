@@ -71,4 +71,20 @@ void main() {
     expect(find.byType(ShowcaseView), findsOneWidget);
     expect(find.text('Design System & Tokens'), findsOneWidget);
   });
+
+  testWidgets('LoginView renders footer without duplicate text',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(
+      GetMaterialApp(
+        translations: AppStrings(),
+        locale: const Locale('en', 'US'),
+        home: LoginView(),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text("Don't have an account?"), findsOneWidget);
+    expect(find.text('Create Account'), findsOneWidget);
+    expect(find.text("Don't have an account? Sign Up"), findsNothing);
+  });
 }

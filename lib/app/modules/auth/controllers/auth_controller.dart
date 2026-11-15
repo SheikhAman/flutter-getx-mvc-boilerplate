@@ -94,7 +94,6 @@ class AuthController extends GetxController {
       pendingEmail.value = email;
 
       await StorageService.to.setRememberMe(rememberMe.value);
-      AppSnackbar.showInfo(AppStrings.demoOtpHint.tr);
 
       prepareOtpController();
       startResendTimer();
@@ -128,8 +127,6 @@ class AuthController extends GetxController {
       pendingUser.value = user;
       pendingEmail.value = email;
       pendingPhone.value = phone;
-
-      AppSnackbar.showInfo(AppStrings.demoOtpHint.tr);
 
       prepareOtpController();
       startResendTimer();

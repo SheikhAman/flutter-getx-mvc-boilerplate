@@ -99,52 +99,64 @@ class OtpView extends GetView<AuthController> {
               const SizedBox(height: AppSizes.p32),
 
               // Pin Code Input
-              PinCodeTextField(
-                key: const ValueKey('otp_pin_code_field'),
-                appContext: context,
-                length: 6,
-                autoFocus: true,
-                autoUnfocus: false,
-                focusNode: controller.otpFocusNode,
-                autoDisposeControllers: false,
-                obscureText: false,
-                animationType: AnimationType.fade,
-                cursorColor: theme.colorScheme.primary,
-                textStyle: AppTextStyles.h3.copyWith(
-                  color: isDark
-                      ? AppColors.textPrimaryDark
-                      : AppColors.textPrimaryLight,
-                ),
-                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                pinTheme: PinTheme(
-                  shape: PinCodeFieldShape.box,
-                  borderRadius: AppSizes.borderRadiusMd,
-                  fieldHeight: 52,
-                  fieldWidth: 44,
-                  activeFillColor:
-                      isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                  inactiveFillColor: isDark
-                      ? const Color(0xFF1E1E1E)
-                      : const Color(0xFFF9FAFB),
-                  selectedFillColor:
-                      isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                  activeColor: theme.colorScheme.primary,
-                  inactiveColor: isDark
-                      ? const Color(0xFF374151)
-                      : const Color(0xFFE5E7EB),
-                  selectedColor: theme.colorScheme.primary,
-                  borderWidth: 1.5,
-                ),
-                animationDuration: const Duration(milliseconds: 250),
-                enableActiveFill: true,
-                controller: controller.otpController,
-                keyboardType: TextInputType.number,
-                onCompleted: (code) {
-                  controller.verifyOtp(code);
+              GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () {
+                  controller.otpFocusNode.requestFocus();
+                  SystemChannels.textInput.invokeMethod('TextInput.show');
                 },
-                onChanged: (value) {
-                  controller.otpCode.value = value;
-                },
+                child: PinCodeTextField(
+                  key: const ValueKey('otp_pin_code_field'),
+                  appContext: context,
+                  length: 6,
+                  autoFocus: true,
+                  autoUnfocus: false,
+                  autoDismissKeyboard: false,
+                  focusNode: controller.otpFocusNode,
+                  autoDisposeControllers: false,
+                  obscureText: false,
+                  animationType: AnimationType.fade,
+                  cursorColor: theme.colorScheme.primary,
+                  textStyle: AppTextStyles.h3.copyWith(
+                    color: isDark
+                        ? AppColors.textPrimaryDark
+                        : AppColors.textPrimaryLight,
+                  ),
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  pinTheme: PinTheme(
+                    shape: PinCodeFieldShape.box,
+                    borderRadius: AppSizes.borderRadiusMd,
+                    fieldHeight: 52,
+                    fieldWidth: 44,
+                    activeFillColor:
+                        isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                    inactiveFillColor: isDark
+                        ? const Color(0xFF1E1E1E)
+                        : const Color(0xFFF9FAFB),
+                    selectedFillColor:
+                        isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                    activeColor: theme.colorScheme.primary,
+                    inactiveColor: isDark
+                        ? const Color(0xFF374151)
+                        : const Color(0xFFE5E7EB),
+                    selectedColor: theme.colorScheme.primary,
+                    borderWidth: 1.5,
+                  ),
+                  animationDuration: const Duration(milliseconds: 250),
+                  enableActiveFill: true,
+                  controller: controller.otpController,
+                  keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.done,
+                  onTap: () {
+                    SystemChannels.textInput.invokeMethod('TextInput.show');
+                  },
+                  onCompleted: (code) {
+                    controller.verifyOtp(code);
+                  },
+                  onChanged: (value) {
+                    controller.otpCode.value = value;
+                  },
+                ),
               ),
               const SizedBox(height: AppSizes.p24),
 
