@@ -19,9 +19,7 @@ class ForgotPasswordView extends GetView<AuthController> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: CustomAppBar(
-        title: AppStrings.forgotPassword.tr,
-      ),
+      appBar: const CustomAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSizes.p24),

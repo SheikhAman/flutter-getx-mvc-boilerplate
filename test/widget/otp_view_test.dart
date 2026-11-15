@@ -92,5 +92,15 @@ void main() {
       // Drain snackbar animation
       await tester.pump(const Duration(seconds: 5));
     });
+
+    testWidgets(
+        'renders Verify Code header once without duplicate title in AppBar',
+        (tester) async {
+      await tester.pumpWidget(buildTestHost(const OtpView()));
+      await tester.pump();
+
+      // Heading appears once
+      expect(find.text('Verify Code'), findsOneWidget);
+    });
   });
 }
