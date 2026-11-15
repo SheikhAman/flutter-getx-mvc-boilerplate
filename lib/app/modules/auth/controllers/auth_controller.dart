@@ -172,7 +172,6 @@ class AuthController extends GetxController {
         authToken: 'jwt_auth_${DateTime.now().millisecondsSinceEpoch}',
       );
 
-      AppSnackbar.showSuccess(AppStrings.success.tr);
       Get.offAllNamed(AppRoutes.dashboard);
       return true;
     } catch (e) {

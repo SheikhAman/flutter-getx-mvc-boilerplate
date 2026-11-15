@@ -43,9 +43,15 @@ class PostDetailView extends GetView<PostDetailController> {
             SliverAppBar(
               expandedHeight: 180.0,
               pinned: true,
+              backgroundColor: theme.colorScheme.primary,
+              foregroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
               leading: IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new_rounded,
-                    size: AppSizes.iconSm),
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: AppSizes.iconSm,
+                  color: Colors.white,
+                ),
                 onPressed: () => Get.back(),
               ),
               actions: [
@@ -54,12 +60,12 @@ class PostDetailView extends GetView<PostDetailController> {
                     controller.isLiked.value
                         ? Icons.favorite_rounded
                         : Icons.favorite_border_rounded,
-                    color: controller.isLiked.value ? Colors.red : null,
+                    color: controller.isLiked.value ? Colors.red : Colors.white,
                   ),
                   onPressed: controller.toggleLike,
                 ),
                 IconButton(
-                  icon: const Icon(Icons.share_outlined),
+                  icon: const Icon(Icons.share_outlined, color: Colors.white),
                   onPressed: () {},
                 ),
               ],
@@ -68,6 +74,7 @@ class PostDetailView extends GetView<PostDetailController> {
                   'Post #${post.id}',
                   style: AppTextStyles.titleMedium.copyWith(
                     color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 background: Container(
