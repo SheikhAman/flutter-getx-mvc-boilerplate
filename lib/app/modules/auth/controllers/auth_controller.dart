@@ -35,8 +35,18 @@ class AuthController extends GetxController {
   final registerConfirmPasswordController = TextEditingController();
 
   // Controllers for OTP & Forgot Password
-  final otpController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
   final forgotPasswordEmailController = TextEditingController();
+
+  void prepareOtpController() {
+    try {
+      otpController.clear();
+      otpController.addListener(() {});
+      otpController.removeListener(() {});
+    } catch (_) {
+      otpController = TextEditingController();
+    }
+  }
 
   // OTP Timer
   Timer? _timer;
@@ -77,6 +87,7 @@ class AuthController extends GetxController {
       await StorageService.to.setRememberMe(rememberMe.value);
       AppSnackbar.showInfo(AppStrings.demoOtpHint.tr);
 
+      prepareOtpController();
       startResendTimer();
       Get.toNamed(
         AppRoutes.otp,
@@ -111,6 +122,7 @@ class AuthController extends GetxController {
 
       AppSnackbar.showInfo(AppStrings.demoOtpHint.tr);
 
+      prepareOtpController();
       startResendTimer();
       Get.toNamed(
         AppRoutes.otp,
@@ -196,7 +208,9 @@ class AuthController extends GetxController {
     registerPhoneController.dispose();
     registerPasswordController.dispose();
     registerConfirmPasswordController.dispose();
-    otpController.dispose();
+    try {
+      otpController.dispose();
+    } catch (_) {}
     forgotPasswordEmailController.dispose();
     super.onClose();
   }

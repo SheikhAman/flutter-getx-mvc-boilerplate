@@ -61,20 +61,37 @@ class OtpView extends GetView<AuthController> {
                 ),
               ),
               const SizedBox(height: AppSizes.p16),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSizes.p16,
-                  vertical: AppSizes.p8,
-                ),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withAlpha(20),
-                  borderRadius: AppSizes.borderRadiusMd,
-                ),
-                child: Text(
-                  'Demo OTP: ${ApiConstants.demoOtp}',
-                  style: AppTextStyles.titleSmall.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.bold,
+              InkWell(
+                onTap: () {
+                  controller.otpController.text = ApiConstants.demoOtp;
+                },
+                borderRadius: AppSizes.borderRadiusMd,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSizes.p16,
+                    vertical: AppSizes.p8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.primary.withAlpha(20),
+                    borderRadius: AppSizes.borderRadiusMd,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.touch_app_outlined,
+                        size: 16,
+                        color: theme.colorScheme.primary,
+                      ),
+                      const SizedBox(width: AppSizes.p6),
+                      Text(
+                        'Demo OTP: ${ApiConstants.demoOtp} (Tap to auto-fill)',
+                        style: AppTextStyles.titleSmall.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -84,6 +101,7 @@ class OtpView extends GetView<AuthController> {
               PinCodeTextField(
                 appContext: context,
                 length: 6,
+                autoDisposeControllers: false,
                 obscureText: false,
                 animationType: AnimationType.fade,
                 pinTheme: PinTheme(
