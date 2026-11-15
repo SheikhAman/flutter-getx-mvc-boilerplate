@@ -29,75 +29,88 @@ Built for senior engineers, tech leads, startups, and beginners who want to buil
 
 <table>
   <tr>
-    <td align="center" width="50%">
+    <td align="center" width="33.33%" valign="top">
       <b>1. Onboarding Carousel</b><br>
-      <sub>3-step interactive onboarding with page indicator</sub><br><br>
+      <sub>3-step interactive intro</sub><br><br>
       <picture>
         <source srcset="screenshots/scene1_onboarding.webp" type="image/webp">
-        <img src="screenshots/scene1_onboarding.webp" width="280" alt="Onboarding Carousel" />
+        <img src="screenshots/scene1_onboarding.webp" width="220" alt="Onboarding Carousel" />
       </picture>
     </td>
-    <td align="center" width="50%">
+    <td align="center" width="33.33%" valign="top">
       <b>2. Auth & OTP Verification</b><br>
-      <sub>Login, 1-tap OTP auto-fill & session setup</sub><br><br>
+      <sub>1-tap OTP auto-fill & session</sub><br><br>
       <picture>
         <source srcset="screenshots/scene2_login_otp.webp" type="image/webp">
-        <img src="screenshots/scene2_login_otp.webp" width="280" alt="Auth & OTP Verification" />
+        <img src="screenshots/scene2_login_otp.webp" width="220" alt="Auth & OTP Verification" />
       </picture>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <b>3. Home Feed & Infinite Scroll</b><br>
-      <sub>Shimmer skeletons, pull-to-refresh & pagination</sub><br><br>
+    <td align="center" width="33.33%" valign="top">
+      <b>3. Feed & Infinite Scroll</b><br>
+      <sub>Shimmer & pull-to-refresh</sub><br><br>
       <picture>
         <source srcset="screenshots/scene3_home_feed.webp" type="image/webp">
-        <img src="screenshots/scene3_home_feed.webp" width="280" alt="Home Feed & Infinite Scroll" />
+        <img src="screenshots/scene3_home_feed.webp" width="220" alt="Home Feed & Infinite Scroll" />
       </picture>
     </td>
-    <td align="center" width="50%">
+  </tr>
+  <tr>
+    <td align="center" width="33.33%" valign="top">
       <b>4. Reactive Post Creation</b><br>
-      <sub>Modal bottom sheet with double-submit guard</sub><br><br>
+      <sub>Modal bottom sheet guard</sub><br><br>
       <picture>
         <source srcset="screenshots/scene4_create_post.webp" type="image/webp">
-        <img src="screenshots/scene4_create_post.webp" width="280" alt="Reactive Post Creation" />
+        <img src="screenshots/scene4_create_post.webp" width="220" alt="Reactive Post Creation" />
       </picture>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
+    <td align="center" width="33.33%" valign="top">
       <b>5. Collapsible SliverAppBar</b><br>
-      <sub>High-contrast pinned header & like toggle</sub><br><br>
+      <sub>High-contrast pinned bar</sub><br><br>
       <picture>
         <source srcset="screenshots/scene5_post_detail_scroll.webp" type="image/webp">
-        <img src="screenshots/scene5_post_detail_scroll.webp" width="280" alt="Post Detail & Collapsible SliverAppBar" />
+        <img src="screenshots/scene5_post_detail_scroll.webp" width="220" alt="Post Detail & Collapsible SliverAppBar" />
       </picture>
     </td>
-    <td align="center" width="50%">
-      <b>6. Real-Time Debounced Search</b><br>
-      <sub>400ms query filter across feed posts</sub><br><br>
+    <td align="center" width="33.33%" valign="top">
+      <b>6. Debounced Search</b><br>
+      <sub>400ms real-time filter</sub><br><br>
       <picture>
         <source srcset="screenshots/scene6_search.webp" type="image/webp">
-        <img src="screenshots/scene6_search.webp" width="280" alt="Real-Time Debounced Search" />
+        <img src="screenshots/scene6_search.webp" width="220" alt="Real-Time Debounced Search" />
       </picture>
     </td>
   </tr>
   <tr>
-    <td align="center" width="50%">
-      <b>7. Component Gallery Showcase</b><br>
-      <sub>Design tokens, Material 3 dialogs & buttons</sub><br><br>
+    <td align="center" width="33.33%" valign="top">
+      <b>7. Component Showcase</b><br>
+      <sub>Material 3 dialogs & tokens</sub><br><br>
       <picture>
         <source srcset="screenshots/scene7_showcase.webp" type="image/webp">
-        <img src="screenshots/scene7_showcase.webp" width="280" alt="Component Gallery Showcase" />
+        <img src="screenshots/scene7_showcase.webp" width="220" alt="Component Gallery Showcase" />
       </picture>
     </td>
-    <td align="center" width="50%">
+    <td align="center" width="33.33%" valign="top">
       <b>8. Profile & Dynamic Theming</b><br>
-      <sub>Dark mode, color seed palettes & logout dialog</sub><br><br>
+      <sub>Dark mode & color seeds</sub><br><br>
       <picture>
         <source srcset="screenshots/scene8_profile_settings.webp" type="image/webp">
-        <img src="screenshots/scene8_profile_settings.webp" width="280" alt="Profile & Dynamic Theming" />
+        <img src="screenshots/scene8_profile_settings.webp" width="220" alt="Profile & Dynamic Theming" />
       </picture>
+    </td>
+    <td align="center" width="33.33%" valign="top">
+      <b>⚡ Architecture & DX</b><br>
+      <sub>Modular GetX (MVC+S)</sub><br><br>
+      <a href="#-quick-start-in-60-seconds">
+        <img src="https://img.shields.io/badge/Clone%20%26%20Run-60s-22C55E?style=for-the-badge&logo=rocket" alt="Quick Start" />
+      </a>
+      <br/><br/>
+      <a href="#-architecture-overview">
+        <img src="https://img.shields.io/badge/View%20Graph-Mermaid-8A2BE2?style=for-the-badge&logo=diagram-next" alt="View Graph" />
+      </a>
+      <br/><br/>
+      <a href="#-testing--quality-gates">
+        <img src="https://img.shields.io/badge/Tests-54%20Passing-success?style=for-the-badge" alt="Tests" />
+      </a>
     </td>
   </tr>
 </table>

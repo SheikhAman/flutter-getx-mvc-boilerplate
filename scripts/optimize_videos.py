@@ -113,19 +113,19 @@ def generate_horizontal_showcase(results):
         ""
     ]
 
-    # Chunk into rows of 2 for beautiful horizontal side-by-side presentation
-    chunk_size = 2
+    # Chunk into rows of 3 for beautiful horizontal layout
+    chunk_size = 3
     for i in range(0, len(results), chunk_size):
         chunk = results[i:i + chunk_size]
         md_lines.append("<table>")
         md_lines.append("  <tr>")
         for item in chunk:
             title = item['name'].replace('_', ' ').replace('-', ' ').title()
-            md_lines.append('    <td align="center" valign="top" width="320">')
+            md_lines.append('    <td align="center" valign="top" width="33.33%">')
             md_lines.append(f'      <b>{title}</b><br><br>')
             md_lines.append(f'      <picture>')
             md_lines.append(f'        <source srcset="optimized/{item["name"]}.webp" type="image/webp">')
-            md_lines.append(f'        <img src="optimized/{item["name"]}.webp" width="280" alt="{title}" />')
+            md_lines.append(f'        <img src="optimized/{item["name"]}.webp" width="220" alt="{title}" />')
             md_lines.append(f'      </picture><br>')
             md_lines.append(f'      <sub>WebP: {format_bytes(item["webp_size"])} &bull; MP4: {format_bytes(item["mp4_size"])}</sub>')
             md_lines.append('    </td>')
