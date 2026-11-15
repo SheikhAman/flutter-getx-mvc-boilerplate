@@ -37,15 +37,24 @@ class AuthController extends GetxController {
   // Controllers for OTP & Forgot Password
   TextEditingController otpController = TextEditingController();
   final forgotPasswordEmailController = TextEditingController();
+  final FocusNode otpFocusNode = FocusNode();
+  final RxString otpCode = ''.obs;
 
   void prepareOtpController() {
     try {
       otpController.clear();
-      otpController.addListener(() {});
-      otpController.removeListener(() {});
     } catch (_) {
       otpController = TextEditingController();
     }
+    otpCode.value = '';
+  }
+
+  void fillDemoOtp() {
+    otpController.value = TextEditingValue(
+      text: ApiConstants.demoOtp,
+      selection: TextSelection.collapsed(offset: ApiConstants.demoOtp.length),
+    );
+    otpCode.value = ApiConstants.demoOtp;
   }
 
   // OTP Timer
@@ -208,6 +217,7 @@ class AuthController extends GetxController {
     registerPhoneController.dispose();
     registerPasswordController.dispose();
     registerConfirmPasswordController.dispose();
+    otpFocusNode.dispose();
     try {
       otpController.dispose();
     } catch (_) {}

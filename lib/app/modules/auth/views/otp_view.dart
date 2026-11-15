@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../core/network/api_constants.dart';
+import '../../../core/utils/app_snackbar.dart';
+import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_sizes.dart';
 import '../../../core/values/app_strings.dart';
 import '../../../core/values/app_text_styles.dart';
@@ -62,9 +65,7 @@ class OtpView extends GetView<AuthController> {
               ),
               const SizedBox(height: AppSizes.p16),
               InkWell(
-                onTap: () {
-                  controller.otpController.text = ApiConstants.demoOtp;
-                },
+                onTap: controller.fillDemoOtp,
                 borderRadius: AppSizes.borderRadiusMd,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -99,11 +100,22 @@ class OtpView extends GetView<AuthController> {
 
               // Pin Code Input
               PinCodeTextField(
+                key: const ValueKey('otp_pin_code_field'),
                 appContext: context,
                 length: 6,
+                autoFocus: true,
+                autoUnfocus: false,
+                focusNode: controller.otpFocusNode,
                 autoDisposeControllers: false,
                 obscureText: false,
                 animationType: AnimationType.fade,
+                cursorColor: theme.colorScheme.primary,
+                textStyle: AppTextStyles.h3.copyWith(
+                  color: isDark
+                      ? AppColors.textPrimaryDark
+                      : AppColors.textPrimaryLight,
+                ),
+                inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: AppSizes.borderRadiusMd,
@@ -130,7 +142,9 @@ class OtpView extends GetView<AuthController> {
                 onCompleted: (code) {
                   controller.verifyOtp(code);
                 },
-                onChanged: (_) {},
+                onChanged: (value) {
+                  controller.otpCode.value = value;
+                },
               ),
               const SizedBox(height: AppSizes.p24),
 
@@ -143,6 +157,10 @@ class OtpView extends GetView<AuthController> {
                     final code = controller.otpController.text.trim();
                     if (code.length == 6) {
                       controller.verifyOtp(code);
+                    } else {
+                      AppSnackbar.showWarning(
+                        'Please enter the 6-digit verification code',
+                      );
                     }
                   },
                 ),
@@ -161,12 +179,22 @@ class OtpView extends GetView<AuthController> {
                           ),
                         ),
                       )
-                    : Text(
-                        '${AppStrings.resendIn.tr} ${controller.timerSeconds.value}s',
-                        style: AppTextStyles.bodySmall.copyWith(
-                          color:
-                              theme.textTheme.bodyMedium?.color?.withAlpha(140),
-                        ),
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.timer_outlined,
+                            size: 16,
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
+                          const SizedBox(width: AppSizes.p6),
+                          Text(
+                            'Resend code in ${controller.timerSeconds.value}s',
+                            style: AppTextStyles.caption.copyWith(
+                              color: theme.colorScheme.onSurfaceVariant,
+                            ),
+                          ),
+                        ],
                       ),
               ),
             ],
