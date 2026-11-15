@@ -17,65 +17,9 @@
 **A battle-tested, clean, and scalable Flutter starter template engineered with the Modular GetX (MVC+S) architecture.**  
 Built for senior engineers, tech leads, startups, and beginners who want to build and ship production apps without spending weeks configuring routing, dependency injection, network interceptors, storage, theming, and test suites.
 
-[⚡ Quick Start (60s)](#-quick-start-in-60-seconds) &bull; [💼 For Recruiters & Leads](#-for-recruiters--engineering-leads) &bull; [🏛 Architecture](#-architecture-overview) &bull; [🔄 App Flows](#-how-everything-works-data--app-flows) &bull; [🧩 Add New Feature](#-how-to-add-a-new-module-4-step-recipe) &bull; [🧪 54 Automated Tests](#-testing--quality-gates) &bull; [❓ FAQ](#-troubleshooting--faq)
+[📱 Live Demos (8 Scenes)](#-live-app-showcase-full-8-scene-flow) &bull; [🏛 Architecture Graph](#-architecture-overview) &bull; [🎯 Why MVC+S?](#-architecture-comparison-why-modular-getx-mvcs) &bull; [💼 For Recruiters](#-for-recruiters--engineering-leads) &bull; [⚡ Quick Start](#-quick-start-in-60-seconds) &bull; [🔄 App Flows](#-how-everything-works-data--app-flows) &bull; [🧩 Add Feature](#-how-to-add-a-new-module-4-step-recipe) &bull; [🧪 Tests (54)](#-testing--quality-gates) &bull; [❓ FAQ](#-troubleshooting--faq)
 
 </div>
-
----
-
-## 💼 For Recruiters & Engineering Leads
-
-> **What does this repository prove about the author's engineering capability?**
-
-This repository is designed as a benchmark for **production-ready Flutter engineering**. It avoids both under-engineering (spaghetti code inside StatefulWidgets) and over-engineering (15+ nested folders per feature that slow down delivery).
-
-| Engineering Dimension | Implementation in This Repository | Value Delivered |
-| :--- | :--- | :--- |
-| **Architectural Discipline** | **Modular MVC+S** (`Model - View - Controller + Service`) | Clean separation of UI, business logic, network providers, and permanent singletons. Teams can scale to 15+ developers without merge conflicts. |
-| **State Management & Memory Safety** | Route-level `Bindings` with `Get.lazyPut()` & `onClose()` disposal | Controllers are instantiated only when routes are active and cleanly garbage collected on route pop. **Zero memory leaks.** |
-| **Network Resilience** | `DioClient` with custom interceptors, auto-retry, and token injection | Automatic Bearer token headers, PII-safe log redactions, and instant auto-logout upon `401 Unauthorized`. |
-| **High Test Coverage** | **54 automated tests** (Unit tests, Controller state machines, Widget tests) | Enforces 100% green CI on every GitHub pull request. Zero analyzer warnings allowed. |
-| **Design System & Accessibility** | Material 3 dynamic color seeds, AMOLED dark mode, WCAG AAA contrast | Fluid responsive scaling with `flutter_screenutil`, smooth collapsible hero headers, and custom production dialogs (`AppDialog`). |
-| **Clean DX (Developer Experience)** | 3-command setup, mock backend, single-source design tokens | New engineers can clone and start shipping product features on Day 1. |
-
----
-
-## 🎯 Architecture Comparison: Why Modular GetX MVC+S?
-
-| Metric | Traditional "Clean Arch" (Bloc/DDD) | Raw Flutter (No Architecture) | 🌟 Modular GetX MVC+S (This Repo) |
-| :--- | :--- | :--- | :--- |
-| **Files Per Simple Feature** | 8 – 14 files | 1 huge file | **3 – 4 focused files** (`View`, `Controller`, `Provider`, `Binding`) |
-| **Boilerplate Overhead** | Heavy (UseCases, Repositories, DataSources) | Zero (unmaintainable) | **Zero unnecessary ceremony; pragmatic & readable** |
-| **Onboarding Time** | Days to weeks | Fast initially, crashes later | **Hours — instantly intuitive for junior to senior devs** |
-| **State Reactivity** | Verbose events, states, emitters | Manual `setState()` | **Surgical `Obx()` micro-rebuilds powered by `Rx` primitives** |
-| **Dependency Injection** | Complex manual Service Locators | Constructor drilling | **Declarative, route-bound lazy injection (`Bindings`)** |
-| **Maintainability at Scale** | High but slow delivery | Very low | **High velocity with enterprise stability** |
-
----
-
-## ⚡ Quick Start in 60 Seconds
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/SheikhAman/flutter-getx-mvc-boilerplate.git
-cd flutter-getx-mvc-boilerplate
-
-# 2. Fetch dependencies
-flutter pub get
-
-# 3. Launch on connected device or emulator
-flutter run
-```
-
-### 🔐 Built-in Mock Credentials
-
-The application includes a self-contained mock authentication system. No external backend setup is required to explore:
-
-| Credential | Value | Notes |
-| :--- | :--- | :--- |
-| **Email** | `user@example.com` (or any valid email) | Pre-validated RFC regex |
-| **Password** | `password123` (min 6 characters) | Toggleable visibility eye icon |
-| **Demo OTP** | `112345` | Auto-fill banner supported with 1 tap |
 
 ---
 
@@ -212,6 +156,62 @@ flowchart TD
 3. **Providers:** Feature-specific network clients that invoke the singleton `DioClient` and return deserialized models or exceptions.
 4. **Permanent Services (`GetxService`):** Global singletons (`AuthService`, `StorageService`, `ThemeController`, `LocaleService`, `NetworkInfo`) initialized asynchronously at boot in `main.dart` and retained permanently in memory.
 5. **Bindings (`Bindings`):** Declarative dependency wiring executed automatically by GetX routing when a route is entered (`Get.lazyPut()`).
+
+---
+
+## 🎯 Architecture Comparison: Why Modular GetX MVC+S?
+
+| Metric | Traditional "Clean Arch" (Bloc/DDD) | Raw Flutter (No Architecture) | 🌟 Modular GetX MVC+S (This Repo) |
+| :--- | :--- | :--- | :--- |
+| **Files Per Simple Feature** | 8 – 14 files | 1 huge file | **3 – 4 focused files** (`View`, `Controller`, `Provider`, `Binding`) |
+| **Boilerplate Overhead** | Heavy (UseCases, Repositories, DataSources) | Zero (unmaintainable) | **Zero unnecessary ceremony; pragmatic & readable** |
+| **Onboarding Time** | Days to weeks | Fast initially, crashes later | **Hours — instantly intuitive for junior to senior devs** |
+| **State Reactivity** | Verbose events, states, emitters | Manual `setState()` | **Surgical `Obx()` micro-rebuilds powered by `Rx` primitives** |
+| **Dependency Injection** | Complex manual Service Locators | Constructor drilling | **Declarative, route-bound lazy injection (`Bindings`)** |
+| **Maintainability at Scale** | High but slow delivery | Very low | **High velocity with enterprise stability** |
+
+---
+
+## 💼 For Recruiters & Engineering Leads
+
+> **What does this repository prove about the author's engineering capability?**
+
+This repository is designed as a benchmark for **production-ready Flutter engineering**. It avoids both under-engineering (spaghetti code inside StatefulWidgets) and over-engineering (15+ nested folders per feature that slow down delivery).
+
+| Engineering Dimension | Implementation in This Repository | Value Delivered |
+| :--- | :--- | :--- |
+| **Architectural Discipline** | **Modular MVC+S** (`Model - View - Controller + Service`) | Clean separation of UI, business logic, network providers, and permanent singletons. Teams can scale to 15+ developers without merge conflicts. |
+| **State Management & Memory Safety** | Route-level `Bindings` with `Get.lazyPut()` & `onClose()` disposal | Controllers are instantiated only when routes are active and cleanly garbage collected on route pop. **Zero memory leaks.** |
+| **Network Resilience** | `DioClient` with custom interceptors, auto-retry, and token injection | Automatic Bearer token headers, PII-safe log redactions, and instant auto-logout upon `401 Unauthorized`. |
+| **High Test Coverage** | **54 automated tests** (Unit tests, Controller state machines, Widget tests) | Enforces 100% green CI on every GitHub pull request. Zero analyzer warnings allowed. |
+| **Design System & Accessibility** | Material 3 dynamic color seeds, AMOLED dark mode, WCAG AAA contrast | Fluid responsive scaling with `flutter_screenutil`, smooth collapsible hero headers, and custom production dialogs (`AppDialog`). |
+| **Clean DX (Developer Experience)** | 3-command setup, mock backend, single-source design tokens | New engineers can clone and start shipping product features on Day 1. |
+
+---
+
+## ⚡ Quick Start in 60 Seconds
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/SheikhAman/flutter-getx-mvc-boilerplate.git
+cd flutter-getx-mvc-boilerplate
+
+# 2. Fetch dependencies
+flutter pub get
+
+# 3. Launch on connected device or emulator
+flutter run
+```
+
+### 🔐 Built-in Mock Credentials
+
+The application includes a self-contained mock authentication system. No external backend setup is required to explore:
+
+| Credential | Value | Notes |
+| :--- | :--- | :--- |
+| **Email** | `user@example.com` (or any valid email) | Pre-validated RFC regex |
+| **Password** | `password123` (min 6 characters) | Toggleable visibility eye icon |
+| **Demo OTP** | `112345` | Auto-fill banner supported with 1 tap |
 
 ---
 
