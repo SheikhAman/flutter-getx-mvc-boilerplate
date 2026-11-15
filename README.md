@@ -79,14 +79,84 @@ The application includes a self-contained mock authentication system. No externa
 
 ---
 
-## 📱 Live App Showcase
+## 📱 Live App Showcase (Full 8-Scene Flow)
 
 <div align="center">
 
-| Reactive Post Creation & Feed Ingestion | REST Feed, Shimmer & Infinite Scroll |
-| :---: | :---: |
-| <picture><source srcset="screenshots/create_post_flow.webp" type="image/webp"><img src="screenshots/create_post_flow.gif" width="300" alt="Create post flow with bottom sheet and double-submit protection" /></picture> | <picture><source srcset="screenshots/feed_pagination_flow.webp" type="image/webp"><img src="screenshots/feed_pagination_flow.gif" width="300" alt="Feed pagination with shimmer loading and infinite scroll" /></picture> |
-| **Modal Sheet &bull; Double-Submit Guard**<br><sub>Tap <code>+</code> &rarr; enter title & content &rarr; submit &rarr; sheet closes &rarr; feed updates instantly</sub> | **REST Feed &bull; Shimmer &bull; Infinite Scroll**<br><sub>Splash transition &rarr; shimmer skeleton loader &rarr; scroll to fetch page 2</sub> |
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <b>1. Onboarding Carousel</b><br>
+      <sub>3-step interactive onboarding with page indicator</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene1_onboarding.webp" type="image/webp">
+        <img src="screenshots/scene1_onboarding.webp" width="280" alt="Onboarding Carousel" />
+      </picture>
+    </td>
+    <td align="center" width="50%">
+      <b>2. Auth & OTP Verification</b><br>
+      <sub>Login, 1-tap OTP auto-fill & session setup</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene2_login_otp.webp" type="image/webp">
+        <img src="screenshots/scene2_login_otp.webp" width="280" alt="Auth & OTP Verification" />
+      </picture>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <b>3. Home Feed & Infinite Scroll</b><br>
+      <sub>Shimmer skeletons, pull-to-refresh & pagination</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene3_home_feed.webp" type="image/webp">
+        <img src="screenshots/scene3_home_feed.webp" width="280" alt="Home Feed & Infinite Scroll" />
+      </picture>
+    </td>
+    <td align="center" width="50%">
+      <b>4. Reactive Post Creation</b><br>
+      <sub>Modal bottom sheet with double-submit guard</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene4_create_post.webp" type="image/webp">
+        <img src="screenshots/scene4_create_post.webp" width="280" alt="Reactive Post Creation" />
+      </picture>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <b>5. Collapsible SliverAppBar</b><br>
+      <sub>High-contrast pinned header & like toggle</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene5_post_detail_scroll.webp" type="image/webp">
+        <img src="screenshots/scene5_post_detail_scroll.webp" width="280" alt="Post Detail & Collapsible SliverAppBar" />
+      </picture>
+    </td>
+    <td align="center" width="50%">
+      <b>6. Real-Time Debounced Search</b><br>
+      <sub>400ms query filter across feed posts</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene6_search.webp" type="image/webp">
+        <img src="screenshots/scene6_search.webp" width="280" alt="Real-Time Debounced Search" />
+      </picture>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <b>7. Component Gallery Showcase</b><br>
+      <sub>Design tokens, Material 3 dialogs & buttons</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene7_showcase.webp" type="image/webp">
+        <img src="screenshots/scene7_showcase.webp" width="280" alt="Component Gallery Showcase" />
+      </picture>
+    </td>
+    <td align="center" width="50%">
+      <b>8. Profile & Dynamic Theming</b><br>
+      <sub>Dark mode, color seed palettes & logout dialog</sub><br><br>
+      <picture>
+        <source srcset="screenshots/scene8_profile_settings.webp" type="image/webp">
+        <img src="screenshots/scene8_profile_settings.webp" width="280" alt="Profile & Dynamic Theming" />
+      </picture>
+    </td>
+  </tr>
+</table>
 
 </div>
 
