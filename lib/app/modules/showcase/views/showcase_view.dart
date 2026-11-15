@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/utils/app_dialog.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_sizes.dart';
 import '../../../core/values/app_strings.dart';
@@ -15,84 +16,12 @@ class ShowcaseView extends GetView<ShowcaseController> {
   const ShowcaseView({super.key});
 
   void _showDemoDialog(BuildContext context) {
-    final theme = Theme.of(context);
-    Get.dialog(
-      Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSizes.radiusLg),
-        ),
-        backgroundColor: theme.colorScheme.surface,
-        insetPadding: const EdgeInsets.symmetric(horizontal: AppSizes.p28),
-        child: Padding(
-          padding: const EdgeInsets.all(AppSizes.p24),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(
-                'Boilerplate Dialog',
-                style: AppTextStyles.h3.copyWith(
-                  color: theme.colorScheme.onSurface,
-                ),
-              ),
-              const SizedBox(height: AppSizes.p12),
-              Text(
-                'This is a standardized Material 3 dialog styled to match your active theme, color seed, and typography.',
-                style: AppTextStyles.bodyMedium.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                ),
-              ),
-              const SizedBox(height: AppSizes.p24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () => Get.back(),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSizes.p16,
-                        vertical: AppSizes.p10,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
-                      ),
-                    ),
-                    child: Text(
-                      'Cancel',
-                      style: AppTextStyles.button.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: AppSizes.p10),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(96, AppSizes.buttonHeightSm),
-                      backgroundColor: theme.colorScheme.primary,
-                      foregroundColor: Colors.white,
-                      elevation: 0,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppSizes.p20,
-                        vertical: AppSizes.p10,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
-                      ),
-                    ),
-                    onPressed: () => Get.back(),
-                    child: Text(
-                      'Confirm',
-                      style: AppTextStyles.button.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
+    AppDialog.confirm(
+      title: 'Boilerplate Dialog',
+      message:
+          'This is a standardized Material 3 dialog styled to match your active theme, color seed, and typography.',
+      confirmText: 'Confirm',
+      cancelText: 'Cancel',
     );
   }
 

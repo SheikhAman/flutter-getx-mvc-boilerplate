@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../core/services/auth_service.dart';
 import '../../../core/services/storage_service.dart';
+import '../../../core/utils/app_dialog.dart';
 import '../../../core/utils/app_snackbar.dart';
 import '../../../core/values/app_sizes.dart';
 import '../../../core/values/app_strings.dart';
@@ -175,14 +176,13 @@ class ProfileController extends GetxController {
   }
 
   Future<void> logout() async {
-    Get.defaultDialog(
+    await AppDialog.confirm(
       title: AppStrings.logout.tr,
-      middleText: AppStrings.logoutConfirm.tr,
-      textConfirm: AppStrings.logout.tr,
-      textCancel: AppStrings.cancel.tr,
-      confirmTextColor: Colors.white,
+      message: AppStrings.logoutConfirm.tr,
+      confirmText: AppStrings.logout.tr,
+      cancelText: AppStrings.cancel.tr,
+      isDestructive: true,
       onConfirm: () async {
-        Get.back();
         await authService.logout();
       },
     );

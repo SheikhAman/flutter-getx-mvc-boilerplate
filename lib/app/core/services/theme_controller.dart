@@ -75,6 +75,27 @@ class ThemeController extends GetxController {
           elevation: 0,
         ),
       ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+          ),
+          textStyle: AppTextStyles.button,
+        ),
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.surfaceLight,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusLg),
+        ),
+        titleTextStyle: AppTextStyles.h3.copyWith(
+          color: AppColors.textPrimaryLight,
+        ),
+        contentTextStyle: AppTextStyles.bodyMedium.copyWith(
+          color: AppColors.textSecondaryLight,
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: Colors.white,
@@ -144,6 +165,27 @@ class ThemeController extends GetxController {
           ),
           textStyle: AppTextStyles.button,
           elevation: 0,
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+          ),
+          textStyle: AppTextStyles.button,
+        ),
+      ),
+      dialogTheme: DialogThemeData(
+        backgroundColor: AppColors.surfaceDark,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusLg),
+        ),
+        titleTextStyle: AppTextStyles.h3.copyWith(
+          color: AppColors.textPrimaryDark,
+        ),
+        contentTextStyle: AppTextStyles.bodyMedium.copyWith(
+          color: AppColors.textSecondaryDark,
         ),
       ),
       inputDecorationTheme: InputDecorationTheme(

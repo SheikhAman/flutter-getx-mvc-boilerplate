@@ -40,6 +40,7 @@ class AppStrings extends Translations {
   static const String continueText = 'continue';
   static const String submit = 'submit';
   static const String cancel = 'cancel';
+  static const String confirm = 'confirm';
   static const String save = 'save';
   static const String edit = 'edit';
   static const String delete = 'delete';
@@ -144,6 +145,7 @@ class AppStrings extends Translations {
     continueText: 'Continue',
     submit: 'Submit',
     cancel: 'Cancel',
+    confirm: 'Confirm',
     save: 'Save Changes',
     edit: 'Edit',
     delete: 'Delete',
@@ -237,6 +239,7 @@ class AppStrings extends Translations {
     continueText: 'চালিয়ে যান',
     submit: 'সাবমিট করুন',
     cancel: 'বাতিল',
+    confirm: 'নিশ্চিত করুন',
     save: 'সংরক্ষণ করুন',
     edit: 'সম্পাদনা',
     delete: 'মুছুন',
