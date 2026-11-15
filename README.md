@@ -1,10 +1,7 @@
 <div align="center">
 
 # 🚀 Flutter GetX MVC Boilerplate
-
-**A production-grade, enterprise-ready starter template for Flutter applications built with the Modular GetX (MVC+S) architecture.**
-
-*Clone, run `flutter pub get`, and start shipping production-ready mobile apps with zero architectural boilerplate.*
+### *Enterprise-Grade, Modular Starter Template for High-Performance Mobile Apps*
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.41.9%20(stable)-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
 [![Dart](https://img.shields.io/badge/Dart-3.11.5-0175C2?style=for-the-badge&logo=dart&logoColor=white)](https://dart.dev)
@@ -12,64 +9,77 @@
 [![Architecture](https://img.shields.io/badge/Architecture-Modular%20GetX%20MVC%2BS-22C55E?style=for-the-badge)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate)
 [![Tests](https://img.shields.io/badge/Tests-54%20Passing-success?style=for-the-badge)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate)
 [![Analysis](https://img.shields.io/badge/Analysis-0%20Issues-brightgreen?style=for-the-badge)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate)
+[![CI Pipeline](https://img.shields.io/badge/CI-GitHub%20Actions%20Passing-success?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/SheikhAman/flutter-getx-mvc-boilerplate/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
-[Quick Start](#-quick-start) &bull; [Architecture Graph](#-architecture-overview) &bull; [App Flows](#-how-everything-works-data--app-flows) &bull; [Beginner's Guide](#-beginners-step-by-step-guide) &bull; [Add a Module](#-how-to-add-a-new-module) &bull; [Testing](#-testing--quality-gates) &bull; [Video Tutorial Roadmap](#-video-tutorial--youtube-roadmap) &bull; [FAQ](#-troubleshooting--faq)
+<br/>
+
+**A battle-tested, clean, and scalable Flutter starter template engineered with the Modular GetX (MVC+S) architecture.**  
+Built for senior engineers, tech leads, startups, and beginners who want to build and ship production apps without spending weeks configuring routing, dependency injection, network interceptors, storage, theming, and test suites.
+
+[⚡ Quick Start (60s)](#-quick-start-in-60-seconds) &bull; [💼 For Recruiters & Leads](#-for-recruiters--engineering-leads) &bull; [🏛 Architecture](#-architecture-overview) &bull; [🔄 App Flows](#-how-everything-works-data--app-flows) &bull; [🧩 Add New Feature](#-how-to-add-a-new-module-4-step-recipe) &bull; [🧪 54 Automated Tests](#-testing--quality-gates) &bull; [❓ FAQ](#-troubleshooting--faq)
 
 </div>
 
 ---
 
-## 🎯 Why This Boilerplate?
+## 💼 For Recruiters & Engineering Leads
 
-Most Flutter templates suffer from one of two extremes:
-1. **Over-Engineered "Clean Architecture":** 15+ nested folders per feature (`domain/usecases`, `domain/repositories`, `data/datasources`, `data/models`, `presentation/bloc`). Beginners get lost in boilerplate before writing a single line of business logic.
-2. **Spaghetti Code:** Mixing HTTP calls, state management, and UI logic directly inside `StatefulWidget` classes.
+> **What does this repository prove about the author's engineering capability?**
 
-**Flutter GetX MVC Boilerplate** solves this by adopting the **Modular MVC+S (Model - View - Controller + Service)** pattern. It gives you the structure, separation of concerns, and testability of enterprise apps, with the simplicity and productivity of GetX.
+This repository is designed as a benchmark for **production-ready Flutter engineering**. It avoids both under-engineering (spaghetti code inside StatefulWidgets) and over-engineering (15+ nested folders per feature that slow down delivery).
 
-### Architecture Comparison
-
-| Feature | Over-Engineered Clean Arch | Spaghetti / Raw Flutter | 🌟 Modular GetX MVC+S (This Repo) |
-| :--- | :--- | :--- | :--- |
-| **Learning Curve** | High (days to understand) | Low (no structure) | **Gentle (hours to master)** |
-| **Files Per Feature** | 8 - 12 files | 1 file | **3 - 4 files** (`View`, `Controller`, `Provider`, `Binding`) |
-| **State Management** | Verbose events & states | Manual `setState()` | **Reactive `Rx` variables & `Obx` widgets** |
-| **Dependency Injection** | Complex Service Locators | Manual constructors | **Declarative route-level `Bindings` (`Get.lazyPut`)** |
-| **Testing** | Heavy mock ceremony | Hard to test UI | **Direct unit tests on Controllers & widget tests on Views** |
-| **Speed to Market** | Slow | Fast initially, breaks later | **Rapid & maintainable from Day 1** |
+| Engineering Dimension | Implementation in This Repository | Value Delivered |
+| :--- | :--- | :--- |
+| **Architectural Discipline** | **Modular MVC+S** (`Model - View - Controller + Service`) | Clean separation of UI, business logic, network providers, and permanent singletons. Teams can scale to 15+ developers without merge conflicts. |
+| **State Management & Memory Safety** | Route-level `Bindings` with `Get.lazyPut()` & `onClose()` disposal | Controllers are instantiated only when routes are active and cleanly garbage collected on route pop. **Zero memory leaks.** |
+| **Network Resilience** | `DioClient` with custom interceptors, auto-retry, and token injection | Automatic Bearer token headers, PII-safe log redactions, and instant auto-logout upon `401 Unauthorized`. |
+| **High Test Coverage** | **54 automated tests** (Unit tests, Controller state machines, Widget tests) | Enforces 100% green CI on every GitHub pull request. Zero analyzer warnings allowed. |
+| **Design System & Accessibility** | Material 3 dynamic color seeds, AMOLED dark mode, WCAG AAA contrast | Fluid responsive scaling with `flutter_screenutil`, smooth collapsible hero headers, and custom production dialogs (`AppDialog`). |
+| **Clean DX (Developer Experience)** | 3-command setup, mock backend, single-source design tokens | New engineers can clone and start shipping product features on Day 1. |
 
 ---
 
-## ⚡ Quick Start
+## 🎯 Architecture Comparison: Why Modular GetX MVC+S?
 
-Get the boilerplate running locally in 3 commands:
+| Metric | Traditional "Clean Arch" (Bloc/DDD) | Raw Flutter (No Architecture) | 🌟 Modular GetX MVC+S (This Repo) |
+| :--- | :--- | :--- | :--- |
+| **Files Per Simple Feature** | 8 – 14 files | 1 huge file | **3 – 4 focused files** (`View`, `Controller`, `Provider`, `Binding`) |
+| **Boilerplate Overhead** | Heavy (UseCases, Repositories, DataSources) | Zero (unmaintainable) | **Zero unnecessary ceremony; pragmatic & readable** |
+| **Onboarding Time** | Days to weeks | Fast initially, crashes later | **Hours — instantly intuitive for junior to senior devs** |
+| **State Reactivity** | Verbose events, states, emitters | Manual `setState()` | **Surgical `Obx()` micro-rebuilds powered by `Rx` primitives** |
+| **Dependency Injection** | Complex manual Service Locators | Constructor drilling | **Declarative, route-bound lazy injection (`Bindings`)** |
+| **Maintainability at Scale** | High but slow delivery | Very low | **High velocity with enterprise stability** |
+
+---
+
+## ⚡ Quick Start in 60 Seconds
 
 ```bash
 # 1. Clone the repository
 git clone https://github.com/SheikhAman/flutter-getx-mvc-boilerplate.git
 cd flutter-getx-mvc-boilerplate
 
-# 2. Install dependencies
+# 2. Fetch dependencies
 flutter pub get
 
-# 3. Launch on your connected emulator or physical device
+# 3. Launch on connected device or emulator
 flutter run
 ```
 
-### 🔐 Out-of-the-Box Demo Credentials
+### 🔐 Built-in Mock Credentials
 
-The authentication flow is pre-wired with a mock backend so you can test navigation, validation, and session persistence immediately:
+The application includes a self-contained mock authentication system. No external backend setup is required to explore:
 
 | Credential | Value | Notes |
 | :--- | :--- | :--- |
-| **Email** | `user@example.com` (or any valid email) | Pre-validated format |
-| **Password** | `password123` (min 6 characters) | Toggleable password visibility |
+| **Email** | `user@example.com` (or any valid email) | Pre-validated RFC regex |
+| **Password** | `password123` (min 6 characters) | Toggleable visibility eye icon |
 | **Demo OTP** | `112345` | Auto-fill banner supported with 1 tap |
 
 ---
 
-## 📱 Live App Demos
+## 📱 Live App Showcase
 
 <div align="center">
 
@@ -125,13 +135,19 @@ flowchart TD
     end
 ```
 
+### Layer Responsibilities
+
+1. **Views (`GetView<T>`):** Pure presentation widgets. They reactively render state using `Obx()` and delegate user interactions to the controller. Views never perform HTTP calls or direct storage reads.
+2. **Controllers (`GetxController`):** Encapsulate feature business logic and UI state machines. State variables are declared using `.obs` primitives.
+3. **Providers:** Feature-specific network clients that invoke the singleton `DioClient` and return deserialized models or exceptions.
+4. **Permanent Services (`GetxService`):** Global singletons (`AuthService`, `StorageService`, `ThemeController`, `LocaleService`, `NetworkInfo`) initialized asynchronously at boot in `main.dart` and retained permanently in memory.
+5. **Bindings (`Bindings`):** Declarative dependency wiring executed automatically by GetX routing when a route is entered (`Get.lazyPut()`).
+
 ---
 
 ## 🔄 How Everything Works (Data & App Flows)
 
 ### 1. The Reactive UI Data Flow (View 🔁 Controller)
-
-Understanding how data moves through this boilerplate is the most important concept for beginners:
 
 ```mermaid
 sequenceDiagram
@@ -143,8 +159,8 @@ sequenceDiagram
     participant Dio as DioClient
     participant Server as Remote REST API
 
-    User->>View: Taps button (e.g. "Create Post" or "Like")
-    View->>Controller: controller.submitPost(title, body)
+    User->>View: Taps button (e.g. "Publish Post")
+    View->>Controller: controller.createPost(title, body)
     Controller->>Controller: isLoading.value = true (Obx shows spinner)
     Controller->>Provider: provider.createPost(payload)
     Provider->>Dio: dioClient.post('/posts', data: payload)
@@ -181,32 +197,39 @@ flowchart TD
 
 ---
 
-### 3. Routing & Middleware Guards
-
-Routes in this boilerplate are protected against unauthorized access using GetX `RouteMiddleware`:
+### 3. Route Guard & Session Expiry (401) Flow
 
 ```mermaid
-flowchart LR
-    TargetRoute["User requests /dashboard or /profile"] --> Guard{"AuthGuard Checks Session"}
-    Guard -- "AuthService.isLoggedIn == true" --> Allow["Allow Navigation to Route"]
-    Guard -- "AuthService.isLoggedIn == false" --> Redirect["Redirect to /login with Warning Snackbar"]
+flowchart TD
+    subgraph RouteProtection ["Route Protection"]
+        R1["User navigates to /dashboard or /profile"] --> R2{"AuthGuard Middleware"}
+        R2 -- "Valid Token" --> R3["Access Granted"]
+        R2 -- "No Token" --> R4["Redirect to /login with Warning"]
+    end
+
+    subgraph AutoRevocation ["401 Unauthorized Auto-Revocation"]
+        A1["API Call returns 401 Unauthorized"] --> A2["ApiInterceptor catches error"]
+        A2 --> A3["AuthService.logout() called"]
+        A3 --> A4["Clear Token & Cache from GetStorage"]
+        A4 --> A5["Route to /login with session expired snackbar"]
+    end
 ```
 
 ---
 
-## 📂 Project Directory Structure
+## 📂 Project Structure & Module Directory Map
 
 ```text
 lib/
 ├── app/
 │   ├── core/                      # Global infrastructure & shared modules
 │   │   ├── network/               # ApiConstants, ApiExceptions, ApiInterceptor, DioClient, NetworkInfo
-│   │   ├── routes/                # AppPages, AppRoutes, Guards (AuthGuard, OnboardingGuard)
+│   │   ├── routes/                # AppPages, AppRoutes, Route Guards (AuthGuard, OnboardingGuard)
 │   │   ├── services/              # Permanent singletons: AuthService, LocaleService, StorageService, ThemeController
 │   │   ├── utils/                 # AppDialog, AppSnackbar, Formatters, Validators
 │   │   ├── values/                # AppAssets, AppColors, AppSizes, AppStrings, AppTextStyles
 │   │   └── widgets/               # Reusable UI widgets: CustomAppBar, CustomButton, CustomTextField, etc.
-│   ├── data/                      # Global data models
+│   ├── data/                      # Global data transfer models
 │   │   └── models/                # ApiResponseModel, PostModel, UserModel
 │   └── modules/                   # Independent feature modules (MVC+S)
 │       ├── auth/                  # Login, Register, OTP Verification, Forgot Password
@@ -223,33 +246,33 @@ lib/
 └── main.dart                      # ScreenUtilInit + EasyLoading + GetMaterialApp entrypoint
 ```
 
-### Module Responsibilities Table
+### Module Responsibilities Matrix
 
-| Module | Role / Responsibility | Key Controller | Key Views / Screens |
-| :--- | :--- | :--- | :--- |
-| **`auth`** | User authentication, validation, session setup | `AuthController` | `LoginView`, `RegisterView`, `OtpView`, `ForgotPasswordView` |
-| **`dashboard`** | Bottom navigation container retaining tab states | `DashboardController` | `DashboardView` |
-| **`home`** | REST API list pagination, pull-to-refresh, post creation | `HomeController` | `HomeView`, `CreatePostSheet`, `PostCard` |
-| **`post_detail`**| Full post reading, comments list, high-contrast SliverAppBar | `PostDetailController` | `PostDetailView` |
-| **`search`** | Real-time debounced query filtering (400ms delay) | `AppSearchController` | `SearchView` |
-| **`profile`** | User details display, photo upload, safe logout dialog | `ProfileController` | `ProfileView`, `EditProfileSheet` |
-| **`settings`** | Runtime theme switching, seed palettes, EN/BN languages | `SettingsController` | `SettingsView` |
-| **`showcase`** | Interactive design system catalog (buttons, inputs, dialogs) | `ShowcaseController` | `ShowcaseView` |
-| **`common`** | Connectivity lost banner, 404 handler, web browser | — | `NoInternetView`, `UnknownRouteView`, `WebViewView` |
+| Module | Purpose | Controller | Views / Sub-Widgets | Route |
+| :--- | :--- | :--- | :--- | :--- |
+| **`auth`** | Session management, input validation, OTP verification | `AuthController` | `LoginView`, `RegisterView`, `OtpView`, `ForgotPasswordView` | `/login`, `/register`, `/otp`, `/forgot-password` |
+| **`dashboard`** | Bottom navigation shell retaining 4 primary tabs | `DashboardController` | `DashboardView` | `/dashboard` |
+| **`home`** | REST pagination, shimmer loading, post creation sheet | `HomeController` | `HomeView`, `CreatePostSheet`, `PostCard` | `/home` (Tab 0) |
+| **`post_detail`**| Post reading, comment list, high-contrast pinned app bar | `PostDetailController` | `PostDetailView` | `/posts/detail` |
+| **`search`** | Real-time debounced query filtering (400ms delay) | `AppSearchController` | `SearchView` | `/search` (Tab 1) |
+| **`profile`** | User details display, photo upload, safe logout dialog | `ProfileController` | `ProfileView`, `EditProfileSheet` | `/profile` (Tab 3) |
+| **`settings`** | Runtime theme switching, seed palettes, EN/BN languages | `SettingsController` | `SettingsView` | `/settings` |
+| **`showcase`** | Interactive design system catalog (buttons, inputs, dialogs) | `ShowcaseController` | `ShowcaseView` | `/showcase` (Tab 2) |
+| **`common`** | Connectivity lost banner, 404 handler, web browser | — | `NoInternetView`, `UnknownRouteView`, `WebViewView` | `/no-internet`, `/404`, `/webview` |
 
 ---
 
 ## 🧑‍💻 Beginner's Step-by-Step Guide
 
-### 1. How State Management Works (The 3 Essentials)
+### 1. How State Management Works in 3 Rules
 
-1. **Declare Reactive State (`.obs`):**
+1. **Wrap variables in `.obs`:**
    ```dart
    final count = 0.obs;
    final userName = 'Sheikh Aman'.obs;
    final posts = <PostModel>[].obs;
    ```
-2. **Mutate State in Controller:**
+2. **Mutate state inside the Controller:**
    ```dart
    void increment() => count.value++;
    void addPost(PostModel post) => posts.insert(0, post);
@@ -258,7 +281,7 @@ lib/
    ```dart
    Obx(() => Text('Count: ${controller.count.value}'))
    ```
-   *Only the widgets inside `Obx()` rebuild when the variable changes. No `StatefulWidget`, no `setState()`!*
+   *Only widgets inside `Obx()` re-render when the variable changes. No `StatefulWidget`, no `setState()`!*
 
 ---
 
@@ -415,16 +438,16 @@ This repository enforces a strict, zero-warning CI policy on GitHub Actions:
 # 1. Format verification
 dart format --output=none --set-exit-if-changed .
 
-# 2. Static analysis
+# 2. Static analysis (0 errors, 0 warnings enforced)
 flutter analyze
 
-# 3. Automated test execution (54 tests)
+# 3. Automated test execution (54 passing tests)
 flutter test
 ```
 
 ### Complete Test Suite Breakdown (54 Tests)
 
-| Suite File | Type | Tests | What It Verifies |
+| Suite File | Type | Tests | Focus Area |
 | :--- | :--- | :---: | :--- |
 | `test/widget_test.dart` | Unit / Model | 5 | Validators, formatters, JSON deserialization of User & Post models |
 | `test/unit/controllers/auth_controller_test.dart` | Unit | 7 | Mock login, register, OTP countdown timer, password reset |
@@ -450,17 +473,6 @@ flutter test
 
 If you are creating tutorial videos, tech walkthroughs, or YouTube courses around this boilerplate, here is the recommended 6-part video curriculum:
 
-### Video Series Structure
-
-```mermaid
-flowchart LR
-    V1["Ep 1: The Ultimate GetX Boilerplate (Showcase & Architecture)"] --> V2["Ep 2: Project Setup & Layer Deep-Dive (MVC+S)"]
-    V2 --> V3["Ep 3: Authentication & Route Guards (Login, OTP, Session)"]
-    V3 --> V4["Ep 4: REST API, Shimmer & Infinite Scroll Feed"]
-    V4 --> V5["Ep 5: Theming, Dynamic Seeds & Material 3 Dialogs"]
-    V5 --> V6["Ep 6: Building a Real Feature from Scratch in 10 Mins"]
-```
-
 ### Video Content Breakdown Table
 
 | Ep | Video Title (SEO / Click-Worthy) | Length | Key Topics to Cover & Demonstrate On Screen |
@@ -468,16 +480,9 @@ flowchart LR
 | **01** | *Build Production Flutter Apps 10x Faster with GetX (MVC+S Starter)* | 8–10 min | • Live app demo: Dark mode, OTP auto-fill, Feed, Post creation<br>• Why Clean Architecture is overkill for most apps<br>• Quick Start: Clone, pub get, and run in 60 seconds |
 | **02** | *GetX Folder Structure Explained for Beginners (No More Messy Code!)* | 12–15 min | • Explaining `core/`, `data/`, `modules/`<br>• The life of a screen: `View` &rarr; `Controller` &rarr; `Provider` &rarr; `Binding`<br>• How `Get.lazyPut()` prevents memory leaks |
 | **03** | *Mastering Authentication in Flutter: Mock Backend, OTP & Route Guards* | 14–18 min | • Form validation with regular expressions<br>• PinCodeTextField & auto-fill integration<br>• `AuthGuard` middleware (redirecting unauthenticated users) |
-| **04** | *REST API Feed with Dio, Shimmer Skeletons & Infinite Scroll Pagination* | 15–20 min | • Configuring `DioClient` with interceptors & auto-retries<br>• Beautiful shimmer loading skeletons<br>• Prepending new posts instantly with reactive `RxList` |
+| **04** | *REST API Feed with Dio, Shimmer Loading & Infinite Scroll Pagination* | 15–20 min | • Configuring `DioClient` with interceptors & auto-retries<br>• Beautiful shimmer loading skeletons<br>• Prepending new posts instantly with reactive `RxList` |
 | **05** | *Material 3 Dynamic Theming & Production Dialogs in GetX* | 10–12 min | • Switching light/dark mode with `GetStorage` persistence<br>• Color seed palettes (Purple, Blue, Teal, Coral)<br>• Why standard `Get.defaultDialog` looks dated and how `AppDialog` fixes it |
 | **06** | *Live Coding: Adding a Complete New Feature Module in 10 Minutes!* | 12–15 min | • Live demonstration of adding the `products` module<br>• Creating Provider, Controller, Binding, View<br>• Running `flutter analyze` & writing a widget test |
-
-### 🛠 What You Need to Record These Videos
-
-1. **Screen Recording:** [OBS Studio](https://obsproject.com/) (1080p 60fps, canvas 1920x1080).
-2. **Device Mirroring:** [scrcpy](https://github.com/Genymobile/scrcpy) (`scrcpy --stay-awake --window-title "Flutter Demo"`) for ultra-smooth physical device mirroring.
-3. **IDE Setup:** VS Code or Android Studio with a clean dark theme (e.g. One Dark Pro, Tokyo Night) and font size 15–16px for viewer readability.
-4. **Code Highlights:** Keep terminal commands visible and zoom into relevant code blocks.
 
 ---
 
@@ -494,7 +499,29 @@ Open [`lib/app/core/values/app_strings.dart`](lib/app/core/values/app_strings.da
 
 ---
 
+## 🤝 Contributing & Community
+
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+---
+
+## ⭐ Support This Project
+
+If you find this boilerplate helpful for your personal projects, agency work, or job interviews:
+* ⭐ **Star this repository** to help others discover it!
+* 🍴 **Fork it** to create your own production apps!
+* 📢 **Share it** on LinkedIn, Twitter/X, and tech communities!
+
+---
+
 ## 📄 License
 
-This project is open-source and free to use for personal and commercial products under the [MIT License](LICENSE).  
-Copyright &copy; 2026 Sheikh Aman.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+
+Copyright &copy; 2026 **Sheikh Aman**. Engineered with passion for the Flutter community.
